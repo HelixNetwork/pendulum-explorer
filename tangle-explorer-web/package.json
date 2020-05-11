@@ -14,6 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "@helixnetwork/core": "^1.0.0-alpha.8",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "less": "^3.0.1",
