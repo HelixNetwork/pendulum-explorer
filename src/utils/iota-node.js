@@ -1,8 +1,8 @@
-const log = require('@/utils/log')
-const settings = require('@/utils/settings.js').default
+const log = require('@/utils/log');
+const settings = require('@/utils/settings.js').default;
 
 // The global object for node info etc.
-var obj = {
+const obj = {
   nodeInfo: {
     appName: null,
     appVersion: null,
@@ -20,41 +20,41 @@ var obj = {
     time: null,
     tips: null,
     transactionsToRequest: null,
-    duration: null
-  }
-}
+    duration: null,
+  },
+};
 
 // Create IOTA instance directly with provider
-var iota = new IOTA({
-    'provider': settings.get().nodeUrl
+const iota = new IOTA({
+  provider: settings.get().nodeUrl,
 });
-obj.iota = iota
+obj.iota = iota;
 
-var refreshNodeInfoTmr = null
+let refreshNodeInfoTmr = null;
 
 obj.unsubscribe = (event) => {
-  if(event === "node-info") {
-    if(refreshNodeInfoTmr !== null) {
-      clearInterval(refreshNodeInfoTmr)
-      refreshNodeInfoTmr = null
+  if (event === 'node-info') {
+    if (refreshNodeInfoTmr !== null) {
+      clearInterval(refreshNodeInfoTmr);
+      refreshNodeInfoTmr = null;
     }
   }
-}
+};
 
 obj.subscribe = (event) => {
-  if(event === "node-info") {
-    var refreshNodeInfo = function() {
-      iota.api.getNodeInfo(function(error, success) {
-          if (error) {
-              log(error);
-          } else {
-              obj.nodeInfo = success
-          }
-      })
-    }
+  if (event === 'node-info') {
+    const refreshNodeInfo = () => {
+      iota.api.getNodeInfo((error, success) => {
+        if (error) {
+          log(error);
+        } else {
+          obj.nodeInfo = success;
+        }
+      });
+    };
 
-    refreshNodeInfoTmr = setInterval(refreshNodeInfo, 2000)
-    refreshNodeInfo()
+    refreshNodeInfoTmr = setInterval(refreshNodeInfo, 2000);
+    refreshNodeInfo();
   }
-}
-module.exports = obj
+};
+module.exports = obj;
