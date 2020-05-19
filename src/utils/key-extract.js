@@ -2,10 +2,8 @@
 // Useful during development.
 
 module.exports = (obj) => {
-  var keys = Object.keys(obj)
-  var ks = []
-  for(var k of keys) {
-    ks.push(`${k}: null`)
-  }
-  return ks.join(',\n')
-}
+  const keys = Object.keys(obj);
+  const ks = [];
+  keys.map(k => ks.push(`${k}: null`));
+  return ks.join(',\n');
+};
