@@ -1,16 +1,17 @@
-const store = require('store')
+const store = require('store');
+
 const defaultSettings = {
-  nodeUrl: 'https://nodes.thetangle.org:443'
-}
+  nodeUrl: 'https://nodes.thetangle.org:443',
+};
 
 export default {
   resetToDefault() {
-    store.remove('settings')
+    store.remove('settings');
   },
   set(settings) {
-    store.set('settings', settings)
+    store.set('settings', settings);
   },
   get() {
-    return Object.assign({}, defaultSettings, store.get('settings'))
-  }
-}
+    return Object.assign({}, defaultSettings, store.get('settings'));
+  },
+};
