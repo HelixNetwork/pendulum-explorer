@@ -1,3 +1,1 @@
-module.exports = (a, b) => {
-  return a.timestamp < b.timestamp
-}
+module.exports = (a, b) => a.timestamp < b.timestamp;
