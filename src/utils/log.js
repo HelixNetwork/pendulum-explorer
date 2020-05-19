@@ -1,3 +1,2 @@
-module.exports = function() {
-  console.log.apply(this, arguments)
-}
+module.exports = () => console.log.apply(this, arguments);
+
