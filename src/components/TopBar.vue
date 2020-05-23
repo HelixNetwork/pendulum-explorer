@@ -7,11 +7,11 @@
         </router-link>
       </div>
       <div class='right'>
-        <div class="bar-button">
+        <!-- <div class="bar-button">
           <router-link :to="{ name: 'Settings' }">
             <i class="fa fa-gear icon" style="font-size: 32px"></i>
           </router-link>
-        </div>
+        </div> -->
         <div class='search'>
           <search-field></search-field>
         </div>
@@ -63,7 +63,7 @@ export default {
   left 0
   right 0
   height 80px
-  background #121728
+  background #df9e02
   padding-left 10px
   padding-right 10px
   z-index: 2
