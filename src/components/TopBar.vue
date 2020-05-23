@@ -62,10 +62,9 @@ export default {
   top 0
   left 0
   right 0
-  height 80px
+  height 15%
   background #df9e02
-  padding-left 10px
-  padding-right 10px
+
   z-index: 2
 
   .bar-button
