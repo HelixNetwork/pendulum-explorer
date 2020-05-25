@@ -131,4 +131,6 @@ export default {
 
     float left
     margin-right 5px
+
+
 </style>

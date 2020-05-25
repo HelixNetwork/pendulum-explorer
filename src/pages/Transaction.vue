@@ -18,7 +18,7 @@
           <identi-qr :size='500' :contents="$getQRCode(tx.address)"></identi-qr>
         </div>
         <div class="addr mono-space">
-          <router-link :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link>
+          <router-link class="blue-color" :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link>
         </div>
       </div>
       <div class="tx-info stretch mobile">
@@ -69,7 +69,7 @@
           </tr>
           <tr>
             <td title="The Output Address of all spent inputs, before change is returned">Address</td>
-            <td class="val mono-space"><router-link :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link></td>
+            <td class="val mono-space"><router-link class="blue-color" :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link></td>
           </tr>
           <tr>
               <td title="Value transferred in this Transaction">Value</td>
@@ -93,15 +93,15 @@
           </tr>
           <tr>
               <td title="Hash of the Trunk Transaction which this tranasction approves">Trunk Transaction Hash</td>
-              <td class="val mono-space"><router-link :title='tx.trunkTransaction' :to="{ name: 'Transaction', params: { hash: tx.trunkTransaction }}">{{ tx.trunkTransaction }}</router-link></td>
+              <td class="val mono-space"><router-link class="blue-color" :title='tx.trunkTransaction' :to="{ name: 'Transaction', params: { hash: tx.trunkTransaction }}">{{ tx.trunkTransaction }}</router-link></td>
          </tr>
           <tr>
               <td title="Hash of the Branch Transaction which this Tranasction approves">Branch Transaction Hash</td>
-              <td class="val mono-space"><router-link :title='tx.branchTransaction' :to="{ name: 'Transaction', params: { hash: tx.branchTransaction }}">{{ tx.branchTransaction }}</router-link></td>
+              <td class="val mono-space"><router-link class="blue-color" :title='tx.branchTransaction' :to="{ name: 'Transaction', params: { hash: tx.branchTransaction }}">{{ tx.branchTransaction }}</router-link></td>
          </tr>
           <tr>
               <td td="Hash of the Bundle which this Transaction is contained in">Bundle Hash</td>
-              <td class="val mono-space"><router-link :title='tx.bundle' :to="{ name: 'Bundle', params: { hash: tx.bundle }}">{{ tx.bundle }}</router-link></td>
+              <td class="val mono-space"><router-link class="blue-color" :title='tx.bundle' :to="{ name: 'Bundle', params: { hash: tx.bundle }}">{{ tx.bundle }}</router-link></td>
           </tr>
           <tr>
               <td title="Value to verify Proof of Work">Nonce</td>
@@ -304,4 +304,8 @@ export default {
 
 .val
   word-break break-all
+
+.blue-color{
+color:#1e7fde;
+}
 </style>
