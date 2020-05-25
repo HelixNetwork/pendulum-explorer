@@ -33,8 +33,8 @@ export default {
 @import "../styles/media-mixin.styl"
 
 .logo
-  height 15%
-  width 25%
+  height 25%
+  width 35%
 
 .search
   margin-top 2%
