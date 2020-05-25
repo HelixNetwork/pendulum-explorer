@@ -28,14 +28,14 @@ export default {
   width:100%;
   padding-top:5%;
 }
-@media only screen and (max-width: 375px) and (max-height: 812px) {
+@media only screen and (device-width: 375px) and (device-height: 812px) {
 .main{
   height: 100%;
   width:100%;
   padding-top:10%;
 }
 }
-@media only screen and (max-width: 414px) and (max-height: 896px) {
+@media only screen and (device-width: 414px) and (device-height: 896px) {
 .main{
   height: 100%;
   width:100%;
