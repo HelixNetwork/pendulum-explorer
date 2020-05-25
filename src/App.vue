@@ -28,4 +28,18 @@ export default {
   width:100%;
   padding-top:5%;
 }
+@media only screen and (max-width: 375px) and (max-width: 812px) {
+.main{
+  height: 100%;
+  width:100%;
+  padding-top:10%;
+}
+}
+@media only screen and (max-width: 414px) and (max-width: 896px) {
+.main{
+  height: 100%;
+  width:100%;
+  padding-top:10%;
+}
+}
 </style>
