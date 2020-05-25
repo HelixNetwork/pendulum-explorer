@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
-    <top-bar></top-bar><br>
-    <router-view></router-view><br>
+  <div class="container-fluid">
+    <top-bar></top-bar><br><br>
+    <div class="main">
+    <router-view></router-view>
+    </div><br>
     <bottom-bar></bottom-bar>
   </div>
 </template>
@@ -20,11 +22,10 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 80px;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,500;1,700&display=swap');
+.main{
+  height: 100%;
+  width:100%;
+  padding-top:5%;
 }
 </style>

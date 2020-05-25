@@ -4,10 +4,18 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import Toast from 'vue-easy-toast'
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+
 
 const IOTAPlugin = require('@/utils/IOTAPlugin').default
 Vue.use(IOTAPlugin)
 Vue.use(Toast)
+Vue.use(IconsPlugin);
+Vue.use(BootstrapVue);
+Vue.config.productionTip = false;
 
 // Directives (global)
 require('@/directives/click-outside.js')

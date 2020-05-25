@@ -1,6 +1,6 @@
 <template lang="html">
   <div class='node-info' v-if="iotaNode.nodeInfo.appName !== null">
-    <legend>Node Info</legend>
+    <legend class="blue-color">NODE INFO</legend>
     <table class="wrap striped">
         <tbody>
             <tr>
@@ -14,7 +14,7 @@
             <tr>
                 <td title="Current Milestone hash of the tangle"> Latest Milestone</td>
                 <td class="mono-space">
-                  <router-link :title="iotaNode.nodeInfo.latestMilestone" :to="{ name: 'Transaction', params: { hash: iotaNode.nodeInfo.latestMilestone }}">{{ iotaNode.nodeInfo.latestMilestone }}</router-link>
+                  <router-link  class="blue-color" :title="iotaNode.nodeInfo.latestMilestone" :to="{ name: 'Transaction', params: { hash: iotaNode.nodeInfo.latestMilestone }}">{{ iotaNode.nodeInfo.latestMilestone }}</router-link>
                 </td>
             </tr>
             <tr>
@@ -24,7 +24,7 @@
             <tr>
                 <td title="Current Solid Subtangle hash of the tangle"> Lastest Solid Subtangle Milestone</td>
                 <td class="mono-space">
-                  <router-link :title="iotaNode.nodeInfo.latestSolidSubtangleMilestone" :to="{ name: 'Transaction', params: { hash: iotaNode.nodeInfo.latestSolidSubtangleMilestone }}">{{ iotaNode.nodeInfo.latestSolidSubtangleMilestone }}</router-link>
+                  <router-link class="blue-color" :title="iotaNode.nodeInfo.latestSolidSubtangleMilestone" :to="{ name: 'Transaction', params: { hash: iotaNode.nodeInfo.latestSolidSubtangleMilestone }}">{{ iotaNode.nodeInfo.latestSolidSubtangleMilestone }}</router-link>
                 </td>
             </tr>
             <tr>
@@ -61,6 +61,8 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus">
-
-</style>
+<style scoped>
+.blue-color{
+color:#1e7fde;
+}
+</style>>

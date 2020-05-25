@@ -240,6 +240,7 @@ export default {
 .tx-box
   word-break break-all
   background #fff
+  padding-top 5%
 
   .tx-info
     width auto
