@@ -42,7 +42,7 @@ export default {
   padding-top:10%;
 }
 }
-@media only screen and (max-width: 420px) and (max-height: 720px) {
+@media only screen and (min-width: 420px) and (max-width: 720px) {
 .main{
   height: 100%;
   width:100%;
