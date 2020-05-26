@@ -4,7 +4,7 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
          <p class="blue-color">EXPLORE</p> 
         <search-field></search-field>
-        <p> <i class="fa fa-info-circle"></i>  Enter an address, transaction hash,bundle or tag</p> 
+        <!-- <p> <i class="fa fa-info-circle"></i>  Enter an address, transaction hash,bundle or tag</p>  -->
         </div>
       </div>
     <node-info></node-info>
