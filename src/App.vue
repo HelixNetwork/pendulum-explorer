@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <top-bar></top-bar><br><br>
-    <div class="main">
+    <div class="main">  
     <router-view></router-view>
     </div><br>
     <bottom-bar></bottom-bar>
@@ -11,6 +11,7 @@
 <script>
 import TopBar from '@/components/TopBar.vue'
 import BottomBar from '@/components/BottomBar.vue'
+
 
 export default {
   components: {
@@ -28,21 +29,28 @@ export default {
   width:100%;
   padding-top:5%;
 }
-@media only screen and (min-width: 375px) and (min-height: 812px) {
+@media only screen and (device-width: 375px) and (device-height: 812px) {
 .main{
   height: 100%;
   width:100%;
   padding-top:10%;
 }
 }
-@media only screen and (min-width: 414px) and (min-height: 846px) {
+@media only screen and (device-width: 414px) and (device-height: 846px) {
 .main{
   height: 100%;
   width:100%;
   padding-top:10%;
 }
 }
-@media only screen and (min-width: 420px) and (max-height: 720px) {
+@media only screen and (device-width: 420px) and (device-height: 720px) {
+.main{
+  height: 100%;
+  width:100%;
+  padding-top:10%;
+}
+}
+@media only screen and (device-width: 360px) and (device-height: 760px) {
 .main{
   height: 100%;
   width:100%;
