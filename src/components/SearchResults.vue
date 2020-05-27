@@ -45,7 +45,7 @@
 <script>
 require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
-const iotaSearch = require('@/utils/helix-search-engine.js')
+const helixSearch = require('@/utils/helix-search-engine.js')
 
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
