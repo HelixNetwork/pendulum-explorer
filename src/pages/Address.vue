@@ -54,10 +54,10 @@
 
 <script>
   require('@/lib/iota')
-  const iotaNode = require("@/utils/iota-node")
+  const helixNode = require("@/utils/iota-node")
   const txToIO = require('@/utils/tx-to-io.js').default
   const _ = require('lodash')
-  
+
   import TxIo from '@/components/TXIo.vue'
   import IdentiQr from '@/components/IdentiQR.vue'
   import ExpandBox from '@/components/ExpandBox.vue'
@@ -66,7 +66,7 @@
   import IotaBalanceView from '@/components/IotaBalanceView.vue'
   import TxStatus from '@/components/TxStatus.vue'
   import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-  
+
   export default {
     components: {
       IdentiQr,
@@ -81,19 +81,19 @@
     methods: {
       initAddr() {
         var _this = this
-        iotaNode.iota.api.getBalances([this.$route.params.hash], 20, function(e, r) {
+        helixNode.iota.api.getBalances([this.$route.params.hash], 20, function(e, r) {
           _this.addr.balances = _.map(r.balances, (balance) => {
             return parseInt(balance)
           })
         })
-        iotaNode.iota.api.findTransactionObjects({
+        helixNode.iota.api.findTransactionObjects({
           addresses: [this.$route.params.hash]
         }, function(e, r) {
           _this.addr.transactions = r
           var bundles = _.uniq(_.map(r, (tx) => {
             return tx.bundle
           }))
-          iotaNode.iota.api.findTransactionObjects({
+          helixNode.iota.api.findTransactionObjects({
             bundles
           }, function(e, r) {
             (async() => {

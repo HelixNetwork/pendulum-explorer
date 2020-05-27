@@ -47,7 +47,7 @@
 
 <script>
 require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+const helixNode = require("@/utils/iota-node")
 
 import IotaBalanceView from '@/components/IotaBalanceView.vue'
 import IdentiQr from '@/components/IdentiQR.vue'

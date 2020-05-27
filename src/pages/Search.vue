@@ -15,7 +15,7 @@
 
 <script>
 require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+const helixNode = require("@/utils/iota-node")
 const iotaSearch = require('@/utils/iota-search-engine.js')
 
 import SearchResults from '@/components/SearchResults.vue'

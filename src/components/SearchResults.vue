@@ -44,7 +44,7 @@
 
 <script>
 require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+const helixNode = require("@/utils/iota-node")
 const iotaSearch = require('@/utils/iota-search-engine.js')
 
 import IotaBalanceView from '@/components/IotaBalanceView.vue'

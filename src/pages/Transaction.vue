@@ -132,7 +132,7 @@
 
 <script>
 require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+const helixNode = require("@/utils/iota-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
@@ -160,7 +160,7 @@ export default {
   methods: {
     getIOFromTX() {
       var _this = this
-      iotaNode.iota.api.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
+      helixNode.iota.api.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
         console.log('eeee', e, r);
         (async() => {
           var ios = await txToIO(r)
@@ -174,7 +174,7 @@ export default {
     },
     initTX() {
       var _this = this
-      iotaNode.iota.api.getTransactionsObjects([this.$route.params.hash], function(e, r) {
+      helixNode.iota.api.getTransactionsObjects([this.$route.params.hash], function(e, r) {
         _this.tx = r[0]
         _this.getIOFromTX(r[0])
       })
