@@ -9,7 +9,7 @@
 const _ = require('lodash')
 require('@/lib/iota')
 const helixNode = require("@/utils/helix-node")
-const iotaSearch = require('@/utils/iota-search-engine.js')
+const iotaSearch = require('@/utils/helix-search-engine.js')
 
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
