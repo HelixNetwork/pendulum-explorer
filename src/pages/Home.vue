@@ -14,7 +14,7 @@
 <script>
 import NodeInfo from '@/components/NodeInfo.vue'
 import SearchField from '@/components/SearchField.vue'
-var helixNode = require("@/utils/helix-node")
+import helixNode from "@/utils/helix-node";
 
 export default {
   components: {

@@ -53,7 +53,7 @@
 </template>
 
 <script>
-var helixNode = require("@/utils/helix-node")
+import helixNode from "@/utils/helix-node";
 
 export default {
   data() {
