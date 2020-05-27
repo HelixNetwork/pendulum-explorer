@@ -46,7 +46,7 @@
 </template>
 
 <script>
-require('@/lib/iota')
+require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 
 import HelixBalanceView from '@/components/HelixBalanceView.vue'

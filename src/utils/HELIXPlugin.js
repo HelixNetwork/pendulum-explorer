@@ -1,5 +1,5 @@
 const moment = require('moment');
-require('@/lib/iota');
+require('@/lib/helix');
 const helixNode = require('@/utils/helix-node');
 
 export default {

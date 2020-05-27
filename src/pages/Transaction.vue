@@ -131,7 +131,7 @@
 </template>
 
 <script>
-require('@/lib/iota')
+require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 

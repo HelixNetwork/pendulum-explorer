@@ -49,7 +49,7 @@
 </template>
 
 <script>
-require('@/lib/iota')
+require('@/lib/helix')
 var helixNode = require("@/utils/helix-node")
 
 export default {

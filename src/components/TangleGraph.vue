@@ -32,7 +32,7 @@
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 const vis = require('vis')
 const _ = require('lodash')
-require('@/lib/iota')
+require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 const $ = require('jquery')
 
