@@ -131,7 +131,6 @@
 </template>
 
 <script>
-require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 
@@ -160,7 +159,7 @@ export default {
   methods: {
     getIOFromTX() {
       var _this = this
-      helixNode.iota.api.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
+      helixNode.helix.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
         console.log('eeee', e, r);
         (async() => {
           var ios = await txToIO(r)
@@ -174,7 +173,7 @@ export default {
     },
     initTX() {
       var _this = this
-      helixNode.iota.api.getTransactionsObjects([this.$route.params.hash], function(e, r) {
+      helixNode.helix.getTransactionsObjects([this.$route.params.hash], function(e, r) {
         _this.tx = r[0]
         _this.getIOFromTX(r[0])
       })
