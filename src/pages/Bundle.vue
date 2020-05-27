@@ -23,7 +23,6 @@
 </template>
 
 <script>
-require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 const _ = require('lodash')
@@ -41,7 +40,7 @@ export default {
   methods: {
     initBundle() {
       var _this = this
-      helixNode.iota.api.findTransactionObjects({
+      helixNode.helix.findTransactionObjects({
         bundles: [this.$route.params.hash]
       }, function(e, r) {
         (async() => {
