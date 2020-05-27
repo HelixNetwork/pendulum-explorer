@@ -1,11 +1,11 @@
+import helixNode from '@/utils/helix-node';
+
 const _ = require('lodash');
-const helixNode = require('@/utils/helix-node');
 
 const txsAreConfirmed = async (txHashes) => {
   const ret = {};
   const getConfirms = async txs =>
     helixNode.helix.getInclusionStates(txs, []).then(response => _.map(response, isConfirmed => !!isConfirmed));
-
   const responses = await getConfirms(txHashes);
   let i = 0;
   for (const hash of txHashes) {

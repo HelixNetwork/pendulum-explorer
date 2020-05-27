@@ -46,8 +46,7 @@
 </template>
 
 <script>
-const helixNode = require("@/utils/helix-node")
-
+import helixNode from "@/utils/helix-node";
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import IdentiQr from '@/components/IdentiQR.vue'
 import ExpandBox from '@/components/ExpandBox.vue'
