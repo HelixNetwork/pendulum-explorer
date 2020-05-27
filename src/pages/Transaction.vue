@@ -15,7 +15,7 @@
       </div>
       <div class="addr-box">
         <div class="qr">
-          <identi-qr :size='500' :contents="$getQRCode(tx.address)"></identi-qr>
+          <identi-qr :size='200' :contents="$getQRCode(tx.address)"></identi-qr>
         </div>
         <div class="addr mono-space">
           <router-link class="blue-color" :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link>
