@@ -63,7 +63,7 @@
   import ExpandBox from '@/components/ExpandBox.vue'
   import RelativeTime from '@/components/RelativeTime.vue'
   import ClickToSelect from '@/components/ClickToSelect.vue'
-  import IotaBalanceView from '@/components/IotaBalanceView.vue'
+  import HelixBalanceView from '@/components/HelixBalanceView.vue'
   import TxStatus from '@/components/TxStatus.vue'
   import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
@@ -75,7 +75,7 @@
       RelativeTime,
       ClickToSelect,
       TxStatus,
-      IotaBalanceView,
+      HelixBalanceView,
       PulseLoader
     },
     methods: {

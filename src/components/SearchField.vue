@@ -11,13 +11,13 @@ require('@/lib/iota')
 const helixNode = require("@/utils/iota-node")
 const iotaSearch = require('@/utils/iota-search-engine.js')
 
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
 import SearchResults from '@/components/SearchResults.vue'
 
 export default {
   components: {
-    RelativeTime, IotaBalanceView, SearchResults
+    RelativeTime, HelixBalanceView, SearchResults
   },
   methods: {
     goTo(name, hash) {

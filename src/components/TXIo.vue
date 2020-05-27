@@ -49,7 +49,7 @@
 require('@/lib/iota')
 const helixNode = require("@/utils/iota-node")
 
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import IdentiQr from '@/components/IdentiQR.vue'
 import ExpandBox from '@/components/ExpandBox.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
@@ -59,7 +59,7 @@ export default {
   components: {
     IdentiQr,
     ExpandBox,
-    IotaBalanceView,
+    HelixBalanceView,
     RelativeTime,
     TxStatus
   },

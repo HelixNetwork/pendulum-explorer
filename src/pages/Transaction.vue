@@ -136,7 +136,7 @@ const helixNode = require("@/utils/iota-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import TxIo from '@/components/TXIo.vue'
 import IdentiQr from '@/components/IdentiQR.vue'
 import ExpandBox from '@/components/ExpandBox.vue'
@@ -151,7 +151,7 @@ export default {
     ExpandBox,
     TxIo,
     RelativeTime,
-    IotaBalanceView,
+    HelixBalanceView,
     TxStatus,
     ClickToSelect,
     TangleGraph,
