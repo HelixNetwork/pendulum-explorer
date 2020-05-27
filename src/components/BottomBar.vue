@@ -1,16 +1,7 @@
 <template lang="html">
-  <div class='bottom-bar'>
-    <div class='container'>
-      <div class="madeby">
-        IOTA Tangle Explorer by Peter Willemsen and <a href="https://github.com/peterwilli/IOTA-tangle-explorer#contributors" target="_blank">fellow contributors</a>
-        <br  />
-        <a target="_blank" href="https://github.com/peterwilli/IOTA-tangle-explorer">Source Code</a> |
-        <router-link :to="{ name: 'Address', params: { hash: 'LAIIZHTEPOTNLZPAEFFZZGPSC9LQZVLDWZAASJZYYIIWRNWJSPXIGZTRESAAMM9QFTVFY9NTLRIWSMHM9CAGASCSYZ' }}">Developer Donation</router-link>
-        <br />
-        Made with <i class="fa fa-heart" style="color:#f45353"></i> in The Netherlands
-      </div>
-    </div>
-  </div>
+  <nav class="navbar fixed-bottom justify-content-center bottom-bar">
+   <a class="lt-item">© 2020. Helix Foundation</a>
+</nav>
 </template>
 
 <script>
@@ -25,8 +16,17 @@ export default {
 @import "../styles/media-mixin.styl"
 
 .bottom-bar
-  margin-top 15px
+  background #df9e02
+  left 0;
+  bottom 0;
+  width 100%;
+  height 5%
 
-.madeby
-  text-align center
+.lt-item{
+
+    font-family: 'Fira Sans', sans-serif;
+    color: #000;
+    font-size: smaller;
+}
+
 </style>

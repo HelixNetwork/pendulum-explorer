@@ -1,4 +1,4 @@
-# IOTA Tangle Explorer
+#  Tangle Explorer
 
 [![Build Status](https://travis-ci.org/peterwilli/IOTA-tangle-explorer.svg?branch=master)](https://travis-ci.org/peterwilli/IOTA-tangle-explorer) | [Donate to developer](https://iota.codebuffet.co/#/addr/LAIIZHTEPOTNLZPAEFFZZGPSC9LQZVLDWZAASJZYYIIWRNWJSPXIGZTRESAAMM9QFTVFY9NTLRIWSMHM9CAGASCSYZ) | [Live demo](https://iota.codebuffet.co)
 

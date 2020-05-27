@@ -1,23 +1,22 @@
 <template lang="html">
-  <div class='top-bar'>
-    <div class='container'>
-      <div class="left">
+  <nav class="navbar fixed-top navbar-expand-lg shadow mb-5 top-bar">
+    <div class="container-fluid">
+          <div class="left">
         <router-link to="/">
           <img class='logo' src="../assets/logo.png" />
         </router-link>
       </div>
-      <div class='right'>
-        <div class="bar-button">
-          <router-link :to="{ name: 'Settings' }">
-            <i class="fa fa-gear icon" style="font-size: 32px"></i>
-          </router-link>
-        </div>
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <span class="navbar-text">
+        <ul class="navbar-nav mr-auto">
         <div class='search'>
           <search-field></search-field>
-        </div>
-      </div>
+        </div> 
+        </ul>
+      </span>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -33,50 +32,23 @@ export default {
 <style lang="stylus" scoped>
 @import "../styles/media-mixin.styl"
 
-.container
-  position relative
-
 .logo
-  margin-top 5px
-  margin-left 5px
+  height 25%
+  width 35%
 
 .search
-  margin-top 20px
+  margin-top 2%
+  right 0
 
 .search-field
   position absolute
-  width 100%
-  right 40px
+  width 50%
+  right 2%
+  top 25%
 
-.right
-  position absolute
-  left 100px
-  right 0px
-
-.left
-  float left
-  width 100px
 
 .top-bar
-  position fixed
-  top 0
-  left 0
-  right 0
-  height 80px
-  background #121728
-  padding-left 10px
-  padding-right 10px
-  z-index: 2
+  background #df9e02
+  height 10%
 
-  .bar-button
-    a
-      display block
-    float right
-    margin-left 5px
-    margin-top 20px
-
-  .icon
-    color #fff
-    margin-left 10px
-    margin-top 2px
 </style>
