@@ -53,10 +53,10 @@
 </template>
 
 <script>
-  const helixNode = require("@/utils/helix-node")
   const txToIO = require('@/utils/tx-to-io.js').default
   const _ = require('lodash')
 
+  import helixNode from "@/utils/helix-node";
   import TxIo from '@/components/TXIo.vue'
   import IdentiQr from '@/components/IdentiQR.vue'
   import ExpandBox from '@/components/ExpandBox.vue'

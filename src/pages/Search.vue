@@ -14,9 +14,9 @@
 </template>
 
 <script>
-const helixNode = require("@/utils/helix-node")
 const helixSearch = require('@/utils/helix-search-engine.js')
 
+import helixNode from "@/utils/helix-node";
 import SearchResults from '@/components/SearchResults.vue'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 

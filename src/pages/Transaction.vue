@@ -131,9 +131,9 @@
 </template>
 
 <script>
-const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 
+import helixNode from "@/utils/helix-node";
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import TxIo from '@/components/TXIo.vue'
@@ -173,7 +173,7 @@ export default {
     },
     initTX() {
       var _this = this
-      helixNode.helix.getTransactionsObjects([this.$route.params.hash], function(e, r) {
+      helixNode.helix.getTransactionObjects([this.$route.params.hash], function(e, r) {
         _this.tx = r[0]
         _this.getIOFromTX(r[0])
       })
