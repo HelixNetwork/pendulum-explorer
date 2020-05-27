@@ -4,7 +4,7 @@
 
 <script>
 import { convertUnits } from "@helixnetwork/unit-converter";
-const helixNode = require("@/utils/helix-node")
+import helixNode from "@/utils/helix-node";
 
 export default {
   props: {
@@ -42,11 +42,11 @@ export default {
         "Th" : "Tera h",
         "Ph" : "Peta h"
       }
-      return `${helixNode.helix.convertUnits(value, 'h', unit)}` + " " + values[unit];
+      return `${convertUnits(value, 'h', unit)}` + " " + values[unit];
     },
     convertToUnits(value) {
       var unit = this.pickUnit(value)
-      return `${helixNode.helix.convertUnits(value, 'h', unit)} ${unit}`
+      return `${convertUnits(value, 'h', unit)} ${unit}`
     }
   }
 }
