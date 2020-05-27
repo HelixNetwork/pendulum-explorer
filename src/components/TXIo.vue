@@ -20,9 +20,9 @@
         <div class="input" v-for="tx in txIO.inputs">
           <div class="io-link">
             <router-link class="mono-space io-link" :style="$getStyleIO(tx.address, viewingHash)" :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link>
-            <span class="iota-val" :class="getValColor(tx.value)"><iota-balance-view :value='tx.value'></iota-balance-view></span>
+            <span class="iota-val" :class="getValColor(tx.value)"><helix-balance-view :value='tx.value'></helix-balance-view></span>
           </div>
-          <span class="iota-val" :class="getValColor(tx.value)"><iota-balance-view :value='tx.value'></iota-balance-view></span>
+          <span class="iota-val" :class="getValColor(tx.value)"><helix-balance-view :value='tx.value'></helix-balance-view></span>
           <router-link class="mono-space io-link" :title='tx.hash' :to="{ name: 'Transaction', params: { hash: tx.hash }}"><span class="tx-button">TX</span></router-link>
         </div>
       </div>
@@ -35,7 +35,7 @@
             <div class="io-link">
               <router-link class="mono-space io-link" :style="$getStyleIO(tx.address, viewingHash)" :title='tx.address' :to="{ name: 'Transaction', params: { hash: tx.hash }}">{{ tx.address }}</router-link>
             </div>
-            <span class="iota-val" :class="getValColor(tx.value)"><iota-balance-view :value='tx.value'></iota-balance-view></span>
+            <span class="iota-val" :class="getValColor(tx.value)"><helix-balance-view :value='tx.value'></helix-balance-view></span>
             <router-link class="mono-space io-link" :title='tx.hash' :to="{ name: 'Transaction', params: { hash: tx.hash }}"><span class="tx-button">TX</ceri-icon></span></router-link>
           </div>
         </div>

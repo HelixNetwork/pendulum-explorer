@@ -44,7 +44,7 @@
           Value
         </div>
         <div class="value">
-          <iota-balance-view :value='tx.value'></iota-balance-view>
+          <helix-balance-view :value='tx.value'></helix-balance-view>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -73,7 +73,7 @@
           </tr>
           <tr>
               <td title="Value transferred in this Transaction">Value</td>
-              <td class="val mono-space"><iota-balance-view :value='tx.value'></iota-balance-view></td>
+              <td class="val mono-space"><helix-balance-view :value='tx.value'></helix-balance-view></td>
           </tr>
           <tr>
               <td title="Tag sent with this Transaction, encoded in Trytes">Tag</td>

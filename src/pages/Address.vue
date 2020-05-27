@@ -23,7 +23,7 @@
           Total balance
         </div>
         <div class="value mono-space">
-          <iota-balance-view :value='addr.balances[0]'></iota-balance-view>
+          <helix-balance-view :value='addr.balances[0]'></helix-balance-view>
         </div>
       </div>
       <div class="clearfix"></div>

@@ -28,7 +28,7 @@
         <span class="result-cat">Address: </span>{{ result.address }}
       </div>
       <div class="cut-text balance">
-        <span class="result-cat">Balance: </span><iota-balance-view :value='result.balance'></iota-balance-view>
+        <span class="result-cat">Balance: </span><helix-balance-view :value='result.balance'></helix-balance-view>
       </div>
     </div>
 
