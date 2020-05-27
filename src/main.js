@@ -1,35 +1,35 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Toast from 'vue-easy-toast';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import Toast from 'vue-easy-toast'
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
+const HELIXPlugin = require('@/utils/HELIXPlugin').default;
 
-
-const IOTAPlugin = require('@/utils/IOTAPlugin').default
-Vue.use(IOTAPlugin)
-Vue.use(Toast)
+Vue.use(HELIXPlugin);
+Vue.use(Toast);
 Vue.use(IconsPlugin);
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 
 // Directives (global)
-require('@/directives/click-outside.js')
-require('@/directives/toast.js')
+require('@/directives/click-outside.js');
+require('@/directives/toast.js');
 
 // Styles (global)
-require('@/styles/font-awesome.scss')
-require('@/styles/layout.styl')
+require('@/styles/font-awesome.scss');
+require('@/styles/layout.styl');
 
-require('@/lib/identi-qrcode')
-require('@/lib/iota')
-require("@/utils/iota-node")
+require('@/lib/identi-qrcode');
+require('@/lib/helix');
+require('@/utils/helix-node');
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({

@@ -44,7 +44,7 @@
           Value
         </div>
         <div class="value">
-          <iota-balance-view :value='tx.value'></iota-balance-view>
+          <helix-balance-view :value='tx.value'></helix-balance-view>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -73,7 +73,7 @@
           </tr>
           <tr>
               <td title="Value transferred in this Transaction">Value</td>
-              <td class="val mono-space"><iota-balance-view :value='tx.value'></iota-balance-view></td>
+              <td class="val mono-space"><helix-balance-view :value='tx.value'></helix-balance-view></td>
           </tr>
           <tr>
               <td title="Tag sent with this Transaction, encoded in Trytes">Tag</td>
@@ -131,12 +131,12 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+require('@/lib/helix')
+const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import TxIo from '@/components/TXIo.vue'
 import IdentiQr from '@/components/IdentiQR.vue'
 import ExpandBox from '@/components/ExpandBox.vue'
@@ -151,7 +151,7 @@ export default {
     ExpandBox,
     TxIo,
     RelativeTime,
-    IotaBalanceView,
+    HelixBalanceView,
     TxStatus,
     ClickToSelect,
     TangleGraph,
@@ -160,7 +160,7 @@ export default {
   methods: {
     getIOFromTX() {
       var _this = this
-      iotaNode.iota.api.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
+      helixNode.iota.api.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
         console.log('eeee', e, r);
         (async() => {
           var ios = await txToIO(r)
@@ -174,7 +174,7 @@ export default {
     },
     initTX() {
       var _this = this
-      iotaNode.iota.api.getTransactionsObjects([this.$route.params.hash], function(e, r) {
+      helixNode.iota.api.getTransactionsObjects([this.$route.params.hash], function(e, r) {
         _this.tx = r[0]
         _this.getIOFromTX(r[0])
       })

@@ -1,8 +1,8 @@
 {
-  "name": "tangle-explorer-web",
+  "name": "helix-tangle-explorer",
   "version": "1.0.0",
-  "description": "IOTA Tangle Explorer",
-  "author": "Peter Willemsen <peter@codebuffet.co>",
+  "description": "Helix Tangle Explorer",
+  "author": "Helix Foundation",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

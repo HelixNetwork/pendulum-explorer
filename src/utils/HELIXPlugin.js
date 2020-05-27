@@ -1,6 +1,6 @@
 const moment = require('moment');
-require('@/lib/iota');
-const iotaNode = require('@/utils/iota-node');
+require('@/lib/helix');
+const helixNode = require('@/utils/helix-node');
 
 export default {
   install(Vue, options) {
@@ -16,7 +16,7 @@ export default {
     };
 
     Vue.prototype.$getStyleIO = (h1, h2) => {
-      if (!(h1 === null || h2 === null) && iotaNode.iota.utils.noChecksum(h1) === iotaNode.iota.utils.noChecksum(h2)) {
+      if (!(h1 === null || h2 === null) && helixNode.iota.utils.noChecksum(h1) === helixNode.iota.utils.noChecksum(h2)) {
         return 'font-weight: bold; font-style:italic';
       }
     };

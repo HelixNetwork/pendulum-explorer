@@ -3,8 +3,8 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+require('@/lib/helix')
+const helixNode = require("@/utils/helix-node")
 
 export default {
   props: {
@@ -35,18 +35,18 @@ export default {
     {
       var unit = this.pickUnit(value)
       var values = {
-        'i' : 'Iota',
-        'Ki' : "Kilo Iota",
-        "Mi" : "Mega Iota",
-        "Gi" : "Giga Iota",
-        "Ti" : "Tera Iota",
-        "Pi" : "Peta Iota"
+        'i' : 'HLX',
+        'Ki' : "Kilo HLX",
+        "Mi" : "Mega HLX",
+        "Gi" : "Giga HLX",
+        "Ti" : "Tera HLX",
+        "Pi" : "Peta HLX"
       }
-      return `${iotaNode.iota.utils.convertUnits(value, 'i', unit)}` + " " + values[unit];
+      return `${helixNode.iota.utils.convertUnits(value, 'i', unit)}` + " " + values[unit];
     },
     convertToUnits(value) {
       var unit = this.pickUnit(value)
-      return `${iotaNode.iota.utils.convertUnits(value, 'i', unit)} ${unit}`
+      return `${helixNode.iota.utils.convertUnits(value, 'i', unit)} ${unit}`
     }
   }
 }

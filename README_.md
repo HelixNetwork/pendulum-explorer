@@ -1,4 +1,4 @@
-# tangle-explorer-web
+# Helix Tangle Explorer
 
 >  Tangle Explorer
 

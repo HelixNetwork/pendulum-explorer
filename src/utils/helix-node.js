@@ -24,7 +24,7 @@ const obj = {
   },
 };
 
-// Create IOTA instance directly with provider
+// Create HELIX instance directly with provider
 const iota = new IOTA({
   provider: settings.get().nodeUrl,
 });

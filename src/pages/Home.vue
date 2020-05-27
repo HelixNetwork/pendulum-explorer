@@ -2,7 +2,7 @@
   <div class="container pt-4">
         <div class="row justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-12">
-         <p class="blue-color">EXPLORE</p> 
+         <p class="blue-color">EXPLORE</p>
         <search-field></search-field>
         <!-- <p> <i class="fa fa-info-circle"></i>  Enter an address, transaction hash,bundle or tag</p>  -->
         </div>
@@ -15,8 +15,8 @@
 import NodeInfo from '@/components/NodeInfo.vue'
 import SearchField from '@/components/SearchField.vue'
 
-require('@/lib/iota')
-var iotaNode = require("@/utils/iota-node")
+require('@/lib/helix')
+var helixNode = require("@/utils/helix-node")
 
 export default {
   components: {
@@ -24,10 +24,10 @@ export default {
     SearchField
   },
   beforeDestroy() {
-    iotaNode.unsubscribe('node-info')
+    helixNode.unsubscribe('node-info')
   },
   mounted() {
-    iotaNode.subscribe('node-info')
+    helixNode.subscribe('node-info')
   }
 };
 </script>

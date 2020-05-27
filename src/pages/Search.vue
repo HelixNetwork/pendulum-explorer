@@ -14,9 +14,9 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
-const iotaSearch = require('@/utils/iota-search-engine.js')
+require('@/lib/helix')
+const helixNode = require("@/utils/helix-node")
+const iotaSearch = require('@/utils/helix-search-engine.js')
 
 import SearchResults from '@/components/SearchResults.vue'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'

@@ -4,8 +4,8 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+require('@/lib/helix')
+const helixNode = require("@/utils/helix-node")
 
 export default {
   props: ['latestInclusion', 'hash'],
@@ -20,7 +20,7 @@ export default {
   methods: {
     update() {
       var _this = this
-      iotaNode.iota.api.getLatestInclusion([this.hash], function(e, r) {
+      helixNode.iota.api.getLatestInclusion([this.hash], function(e, r) {
         if(r[0]) {
           _this.txStatus = 'confirmed'
         }

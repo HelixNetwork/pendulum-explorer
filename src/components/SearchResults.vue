@@ -28,7 +28,7 @@
         <span class="result-cat">Address: </span>{{ result.address }}
       </div>
       <div class="cut-text balance">
-        <span class="result-cat">Balance: </span><iota-balance-view :value='result.balance'></iota-balance-view>
+        <span class="result-cat">Balance: </span><helix-balance-view :value='result.balance'></helix-balance-view>
       </div>
     </div>
 
@@ -43,17 +43,17 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
-const iotaSearch = require('@/utils/iota-search-engine.js')
+require('@/lib/helix')
+const helixNode = require("@/utils/helix-node")
+const helixSearch = require('@/utils/helix-search-engine.js')
 
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
 
 export default {
   props: ['addrResults', 'bundleResults', 'txResults', 'click'],
   components: {
-    IotaBalanceView,
+    HelixBalanceView,
     RelativeTime,
   },
   methods: {

@@ -23,8 +23,8 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+require('@/lib/helix')
+const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 const _ = require('lodash')
 import TxIo from '@/components/TXIo.vue'
@@ -41,7 +41,7 @@ export default {
   methods: {
     initBundle() {
       var _this = this
-      iotaNode.iota.api.findTransactionObjects({
+      helixNode.iota.api.findTransactionObjects({
         bundles: [this.$route.params.hash]
       }, function(e, r) {
         (async() => {

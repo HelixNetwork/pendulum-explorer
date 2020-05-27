@@ -7,17 +7,17 @@
 
 <script>
 const _ = require('lodash')
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
-const iotaSearch = require('@/utils/iota-search-engine.js')
+require('@/lib/helix')
+const helixNode = require("@/utils/helix-node")
+const helixSearch = require('@/utils/helix-search-engine.js')
 
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
 import SearchResults from '@/components/SearchResults.vue'
 
 export default {
   components: {
-    RelativeTime, IotaBalanceView, SearchResults
+    RelativeTime, HelixBalanceView, SearchResults
   },
   methods: {
     goTo(name, hash) {
@@ -62,7 +62,7 @@ export default {
       this.emptyResults()
       var val = e.target.value.trim()
       var _this = this
-      iotaSearch(val, (txs) => {
+      helixSearch(val, (txs) => {
         _this.txResults = txs
       }, (addresses) => {
         _this.addrResults = addresses
