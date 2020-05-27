@@ -1,90 +1,68 @@
-const txSort = require('@/utils/tx-sort-timestamp.js')
-const _ = require('lodash')
-require('@/lib/helix')
-const helixNode = require("@/utils/helix-node")
+const _ = require('lodash');
+const helixNode = require('@/utils/helix-node');
 
-var txIsConfirmed = async function(txHash) {
-  return new Promise(function(resolve, reject) {
-    helixNode.iota.api.getLatestInclusion([txHash], function(e, r) {
-      resolve(!!r[0])
-    })
-  })
-}
+const txsAreConfirmed = async (txHashes) => {
+  const ret = {};
+  const getConfirms = async txs =>
+    helixNode.helix.getInclusionStates(txs, []).then(response => _.map(response, isConfirmed => !!isConfirmed));
 
-var txsAreConfirmed = async function(txHashes) {
-  var ret = {}
-  var getConfirms = async (txHashes) => {
-    return new Promise(function(resolve, reject) {
-      helixNode.iota.api.getLatestInclusion(txHashes, function(e, r) {
-        resolve(_.map(r, (ri) => {
-          return !!ri
-        }))
-      })
-    })
+  const responses = await getConfirms(txHashes);
+  let i = 0;
+  for (const hash of txHashes) {
+    ret[hash] = responses[i];
+    i++;
   }
-  var responses = await getConfirms(txHashes)
-  var i = 0
-  for(var hash of txHashes) {
-    ret[hash] = responses[i]
-    i++
-  }
-  return ret
-}
+  return ret;
+};
 
 export default async (r) => {
-  var res = {}
-  var txCache = {}
-  var txHashes = []
-  for(var i = 0; i < r.length; i++) {
-    var tx = r[i]
-    txHashes.push(tx.hash)
+  let res = {};
+  const txCache = {};
+  const txHashes = [];
+  for (var i = 0; i < r.length; i++) {
+    var tx = r[i];
+    txHashes.push(tx.hash);
   }
-  var confirmedCache = await txsAreConfirmed(txHashes)
-  var showConfirmedOnly = false
-  for(var k in confirmedCache) {
-    if(confirmedCache[k]) {
+  const confirmedCache = await txsAreConfirmed(txHashes);
+  let showConfirmedOnly = false;
+  for (const k in confirmedCache) {
+    if (confirmedCache[k]) {
       // When none of the transactions are confirmed, we can show unconfirmed ones too.
       // When there is at least one confirmed transaction, we're better off just showing the confirmed transaction.
       // Because the rest might be a promote or reattach transaction
-      showConfirmedOnly = true
-      break
+      showConfirmedOnly = true;
+      break;
     }
   }
-  for(var i = 0; i < r.length; i++) {
-    var tx = r[i]
-    if(!res[tx.bundle]) {
-      res[tx.bundle] = { inputs: [], outputs: [] }
+  for (var i = 0; i < r.length; i++) {
+    var tx = r[i];
+    if (!res[tx.bundle]) {
+      res[tx.bundle] = { inputs: [], outputs: [] };
     }
     // Cache is being used for making sure no duplicated transactions from re-attached bundles show up in the i/o gui.
-    var cacheKey = `${tx.bundle}${tx.value}${tx.tag}${tx.address}`
-    if(txCache[cacheKey] === undefined) {
-      var shouldAdd = false
-      if(showConfirmedOnly) {
-        var isConfirmed = confirmedCache[tx.hash]
-        if(isConfirmed) {
-          shouldAdd = true
+    const cacheKey = `${tx.bundle}${tx.value}${tx.tag}${tx.address}`;
+    if (txCache[cacheKey] === undefined) {
+      let shouldAdd = false;
+      if (showConfirmedOnly) {
+        const isConfirmed = confirmedCache[tx.hash];
+        if (isConfirmed) {
+          shouldAdd = true;
         }
+      } else {
+        shouldAdd = true;
       }
-      else {
-        shouldAdd = true
-      }
-      txCache[cacheKey] = null
-      var isInput = tx.value < 0
-      var isOutput = tx.value > 0
-      if(isInput) {
-        res[tx.bundle].inputs.push(tx)
-      }
-      else if(isOutput) {
-        res[tx.bundle].outputs.push(tx)
+      txCache[cacheKey] = null;
+      const isInput = tx.value < 0;
+      const isOutput = tx.value > 0;
+      if (isInput) {
+        res[tx.bundle].inputs.push(tx);
+      } else if (isOutput) {
+        res[tx.bundle].outputs.push(tx);
       }
     }
   }
-  res = Object.values(res)
-  res = _.filter(res, (txs) => {
-    return (txs.inputs.length + txs.outputs.length) > 0
-  })
-  res.sort((a, b) => {
-    return b.inputs[0].timestamp - a.inputs[0].timestamp
-  })
-  return res
-}
+  res = Object.values(res);
+  res = _.filter(res, txs => (txs.inputs.length + txs.outputs.length) > 0);
+  res.sort((a, b) => b.inputs[0].timestamp - a.inputs[0].timestamp);
+  return res;
+};
