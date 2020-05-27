@@ -43,7 +43,6 @@
 </template>
 
 <script>
-require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 const helixSearch = require('@/utils/helix-search-engine.js')
 
