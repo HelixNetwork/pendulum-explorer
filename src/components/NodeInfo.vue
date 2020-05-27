@@ -8,28 +8,32 @@
                 <td class="mono-space">{{ helixNode.nodeInfo.appName }}</td>
             </tr>
             <tr>
-                <td title="Current IRI version">Application Version</td>
+                <td title="Current pendulum version">Application Version</td>
                 <td class="mono-space">{{ helixNode.nodeInfo.appVersion }}</td>
             </tr>
-            <tr>
-                <td title="Current Milestone hash of the tangle"> Latest Milestone</td>
+                <tr>
+                <td title="Current Round index of the tangle">Current Round Index</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.currentRoundIndex }}</td>
+            </tr>
+                <tr>
+                <td title="Current Solid Round hash of the tangle"> Lastest Solid Round Hash</td>
                 <td class="mono-space">
-                  <router-link  class="blue-color" :title="helixNode.nodeInfo.latestMilestone" :to="{ name: 'Transaction', params: { hash: helixNode.nodeInfo.latestMilestone }}">{{ helixNode.nodeInfo.latestMilestone }}</router-link>
+                  <router-link class="blue-color" :title="helixNode.nodeInfo.latestSolidRoundHash" :to="{ name: 'Transaction', params: { hash: helixNode.nodeInfo.latestSolidRoundHash }}">{{ helixNode.nodeInfo.latestSolidRoundHash }}</router-link>
                 </td>
             </tr>
             <tr>
-                <td title="Current Milestone index of the tangle">Lastest Milestone Index</td>
-                <td class="mono-space">{{ helixNode.nodeInfo.latestMilestoneIndex }}</td>
-            </tr>
-            <tr>
-                <td title="Current Solid Subtangle hash of the tangle"> Lastest Solid Subtangle Milestone</td>
+                <td title="Latest Solid Round index of the tangle"> Latest Solid Round Index</td>
                 <td class="mono-space">
-                  <router-link class="blue-color" :title="helixNode.nodeInfo.latestSolidSubtangleMilestone" :to="{ name: 'Transaction', params: { hash: helixNode.nodeInfo.latestSolidSubtangleMilestone }}">{{ helixNode.nodeInfo.latestSolidSubtangleMilestone }}</router-link>
+                  <router-link  class="blue-color" :title="helixNode.nodeInfo.latestSolidRoundIndex" :to="{ name: 'Transaction', params: { hash: helixNode.nodeInfo.latestSolidRoundIndex }}">{{ helixNode.nodeInfo.latestSolidRoundIndex }}</router-link>
                 </td>
             </tr>
             <tr>
-                <td title="Current Solid Subtangle index of the tangle">Lastest Solid Subtangle Milestone Index</td>
-                <td class="mono-space">{{ helixNode.nodeInfo.latestSolidSubtangleMilestoneIndex }}</td>
+                <td title="Round start index of the tangle">Round Start Index</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.roundStartIndex }}</td>
+            </tr>
+             <tr>
+                <td title="Last Snapshotted Round Index">Last Snapshotted Round Index</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.lastSnapshottedRoundIndex }}</td>
             </tr>
             <tr>
                 <td title="Number of neighbouring nodes connected">Number of Neighbours</td>
@@ -49,13 +53,12 @@
 </template>
 
 <script>
-require('@/lib/helix')
 var helixNode = require("@/utils/helix-node")
 
 export default {
   data() {
     return {
-      helixNode: helixNode
+      helixNode
     }
   }
 }
