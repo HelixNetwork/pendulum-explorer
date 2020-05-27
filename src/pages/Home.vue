@@ -16,7 +16,7 @@ import NodeInfo from '@/components/NodeInfo.vue'
 import SearchField from '@/components/SearchField.vue'
 
 require('@/lib/iota')
-var helixNode = require("@/utils/iota-node")
+var helixNode = require("@/utils/helix-node")
 
 export default {
   components: {

@@ -50,7 +50,7 @@
 
 <script>
 require('@/lib/iota')
-var helixNode = require("@/utils/iota-node")
+var helixNode = require("@/utils/helix-node")
 
 export default {
   data() {

@@ -1,6 +1,6 @@
 const moment = require('moment');
 require('@/lib/iota');
-const helixNode = require('@/utils/iota-node');
+const helixNode = require('@/utils/helix-node');
 
 export default {
   install(Vue, options) {

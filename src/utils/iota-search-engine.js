@@ -1,5 +1,5 @@
 require('@/lib/iota');
-const helixNode = require('@/utils/iota-node');
+const helixNode = require('@/utils/helix-node');
 const _ = require('lodash');
 
 module.exports = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDone) => {

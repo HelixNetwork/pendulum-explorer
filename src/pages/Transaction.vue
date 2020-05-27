@@ -132,7 +132,7 @@
 
 <script>
 require('@/lib/iota')
-const helixNode = require("@/utils/iota-node")
+const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'

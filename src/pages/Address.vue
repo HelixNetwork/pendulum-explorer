@@ -54,7 +54,7 @@
 
 <script>
   require('@/lib/iota')
-  const helixNode = require("@/utils/iota-node")
+  const helixNode = require("@/utils/helix-node")
   const txToIO = require('@/utils/tx-to-io.js').default
   const _ = require('lodash')
 

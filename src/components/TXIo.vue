@@ -47,7 +47,7 @@
 
 <script>
 require('@/lib/iota')
-const helixNode = require("@/utils/iota-node")
+const helixNode = require("@/utils/helix-node")
 
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import IdentiQr from '@/components/IdentiQR.vue'

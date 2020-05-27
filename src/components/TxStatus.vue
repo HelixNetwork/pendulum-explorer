@@ -5,7 +5,7 @@
 
 <script>
 require('@/lib/iota')
-const helixNode = require("@/utils/iota-node")
+const helixNode = require("@/utils/helix-node")
 
 export default {
   props: ['latestInclusion', 'hash'],

@@ -1,7 +1,7 @@
 const txSort = require('@/utils/tx-sort-timestamp.js')
 const _ = require('lodash')
 require('@/lib/iota')
-const helixNode = require("@/utils/iota-node")
+const helixNode = require("@/utils/helix-node")
 
 var txIsConfirmed = async function(txHash) {
   return new Promise(function(resolve, reject) {
