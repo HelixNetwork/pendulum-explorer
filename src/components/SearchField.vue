@@ -7,9 +7,8 @@
 
 <script>
 const _ = require('lodash')
-const helixNode = require("@/utils/helix-node")
-const helixSearch = require('@/utils/helix-search-engine.js')
-
+import helixSearch from "@/utils/helix-search-engine";
+import helixNode from "@/utils/helix-node";
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
 import SearchResults from '@/components/SearchResults.vue'

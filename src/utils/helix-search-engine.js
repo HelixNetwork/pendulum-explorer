@@ -1,7 +1,8 @@
-const helixNode = require('@/utils/helix-node');
+import helixNode from '@/utils/helix-node';
+
 const _ = require('lodash');
 
-module.exports = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDone) => {
+const helixSearch = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDone) => {
   let callbackStack = 3;
   const callbackCheck = () => {
     callbackStack -= 1;
@@ -29,7 +30,7 @@ module.exports = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDon
     }
   });
 
-  helixNode.helix.getTransactionsObjects([val], (error, response) => {
+  helixNode.helix.getTransactionObjects([val], (error, response) => {
     callbackTxs(_.filter(response, tx => tx.hash !== '0000000000000000000000000000000000000000000000000000000000000000'));
     callbackCheck();
   });
@@ -42,3 +43,5 @@ module.exports = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDon
     callbackCheck();
   });
 };
+
+export default helixSearch;
