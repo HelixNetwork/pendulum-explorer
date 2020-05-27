@@ -27,8 +27,7 @@ const obj = {
   },
 };
 
-// Create HELIX instance directly with provider
-// eslint-disable-next-line new-cap
+// Create HELIX instance directly with provider\
 const helix = new composeAPI({
   provider: settings.get().nodeUrl,
 });
@@ -61,4 +60,4 @@ obj.subscribe = (event) => {
     refreshNodeInfo();
   }
 };
-module.exports = obj;
+export default obj;
