@@ -15,18 +15,17 @@
                 <td title="Current Round index of the tangle">Current Round Index</td>
                 <td class="mono-space">{{ helixNode.nodeInfo.currentRoundIndex }}</td>
             </tr>
+              <tr>
+                <td title="Latest Solid Round index of the tangle"> Latest Solid Round Index</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.latestSolidRoundIndex }}</td>
+            </tr>
                 <tr>
-                <td title="Current Solid Round hash of the tangle"> Lastest Solid Round Hash</td>
+                <td title="Current Solid Round hash of the tangle"> Latest Solid Round Hash</td>
                 <td class="mono-space">
                   <router-link class="blue-color" :title="helixNode.nodeInfo.latestSolidRoundHash" :to="{ name: 'Transaction', params: { hash: helixNode.nodeInfo.latestSolidRoundHash }}">{{ helixNode.nodeInfo.latestSolidRoundHash }}</router-link>
                 </td>
             </tr>
-            <tr>
-                <td title="Latest Solid Round index of the tangle"> Latest Solid Round Index</td>
-                <td class="mono-space">
-                  <router-link  class="blue-color" :title="helixNode.nodeInfo.latestSolidRoundIndex" :to="{ name: 'Transaction', params: { hash: helixNode.nodeInfo.latestSolidRoundIndex }}">{{ helixNode.nodeInfo.latestSolidRoundIndex }}</router-link>
-                </td>
-            </tr>
+
             <tr>
                 <td title="Round start index of the tangle">Round Start Index</td>
                 <td class="mono-space">{{ helixNode.nodeInfo.roundStartIndex }}</td>
