@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <top-bar></top-bar><br><br>
-    <div class="main">  
+    <div class="main">
     <router-view></router-view>
     </div><br>
     <bottom-bar></bottom-bar>
@@ -56,5 +56,11 @@ export default {
   width:100%;
   padding-top:10%;
 }
+}
+@media only screen and (max-width: 310px) {
+  .qr img {
+    width: 80vw;
+    margin: 0 auto;
+  }
 }
 </style>
