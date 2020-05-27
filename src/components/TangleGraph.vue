@@ -32,7 +32,6 @@
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 const vis = require('vis')
 const _ = require('lodash')
-require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 const $ = require('jquery')
 
@@ -194,7 +193,7 @@ export default {
         return true
       })
 
-      helixNode.iota.api.getTransactionsObjects(arr, function(e, r) {
+      helixNode.helix.getTransactionsObjects(arr, function(e, r) {
         for (var tx of r) {
           _this.txsToRender.push(tx)
         }
