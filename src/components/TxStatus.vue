@@ -4,7 +4,6 @@
 </template>
 
 <script>
-require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 
 export default {
@@ -20,7 +19,7 @@ export default {
   methods: {
     update() {
       var _this = this
-      helixNode.iota.api.getLatestInclusion([this.hash], function(e, r) {
+      helixNode.helix.getInclusionStates([this.hash], [], function(e, r) {
         if(r[0]) {
           _this.txStatus = 'confirmed'
         }
