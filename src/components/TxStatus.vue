@@ -4,7 +4,7 @@
 </template>
 
 <script>
-const helixNode = require("@/utils/helix-node")
+import helixNode from "@/utils/helix-node";
 
 export default {
   props: ['latestInclusion', 'hash'],
