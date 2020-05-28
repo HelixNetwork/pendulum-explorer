@@ -19,7 +19,7 @@
         <tx-io :viewingHash='null' :txIO="txIO"></tx-io>
       </div>
     </div>
-    <div class="bundle-view" v-if="txIOs">
+    <div class="bundle-view" v-if="!txIOs">
       <h4> No transfers found for this bundle :-( </h4>
       </div>
   </div>
