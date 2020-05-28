@@ -10,6 +10,7 @@ import Settings from '@/pages/Settings';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/bundle/:hash',
