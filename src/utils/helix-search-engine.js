@@ -31,7 +31,7 @@ const helixSearch = (val, callbackTxs, callbackAddresses, callbackBundles, fully
   });
 
   helixNode.helix.getTransactionObjects([val], (error, response) => {
-    callbackTxs(_.filter(response, tx => tx.hash !== '0000000000000000000000000000000000000000000000000000000000000000'));
+    callbackTxs(_.filter(response, tx => tx.bundle !== '0000000000000000000000000000000000000000000000000000000000000000'));
     callbackCheck();
   });
   helixNode.helix.findTransactionObjects({ bundles: [val] }, (error, response) => {
