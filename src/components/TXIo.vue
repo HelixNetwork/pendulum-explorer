@@ -85,6 +85,7 @@ export default {
     float right
 
   .io-link
+    color:#1e7fde;
     overflow hidden
     text-overflow ellipsis
     white-space: nowrap

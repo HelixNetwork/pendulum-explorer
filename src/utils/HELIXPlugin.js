@@ -17,7 +17,7 @@ export default {
 
     Vue.prototype.$getStyleIO = (h1, h2) => {
       if (!(h1 === null || h2 === null) && removeChecksum(h1) === removeChecksum(h2)) {
-        return 'font-weight: bold; font-style:italic';
+        return 'font-style:italic';
       }
     };
   },
