@@ -1,11 +1,11 @@
 <template>
-  <div class="container-fluid">
+<div>
     <top-bar></top-bar><br><br>
     <div class="main">
     <router-view></router-view>
     </div><br>
     <bottom-bar></bottom-bar>
-  </div>
+</div>
 </template>
 
 <script>

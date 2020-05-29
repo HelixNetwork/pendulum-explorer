@@ -1,7 +1,7 @@
 <template>
   <div class="container pt-4">
         <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-12 col-md-12 col-lg-12 text-left">
          <p class="blue-color">EXPLORE</p>
         <search-field></search-field>
         </div>
