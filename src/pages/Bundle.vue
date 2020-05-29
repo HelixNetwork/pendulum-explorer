@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="container">
-    <legend>
+    <div v-if="isValid === true">
+      <legend>
       Bundle info
     </legend>
     <div class="info">
@@ -22,6 +23,15 @@
     <div class="bundle-view" v-if="!txIOs">
       <h4> No transfers found for this bundle :-( </h4>
       </div>
+      </div>
+      <div  v-else-if="isValid === false">
+ <legend>
+      Results
+    </legend>
+    <div class="absence error">
+      Invalid search query, please check your search input :(
+    </div>
+  </div>
   </div>
 </template>
 
@@ -31,6 +41,7 @@ const _ = require('lodash')
 import helixNode from "@/utils/helix-node";
 import TxIo from '@/components/TXIo.vue'
 import ClickToSelect from '@/components/ClickToSelect.vue'
+import { isTxHexOfExactLength } from "@helixnetwork/validators";
 
 export default {
   components: {
@@ -43,6 +54,7 @@ export default {
   methods: {
     initBundle() {
       var _this = this
+      if (isTxHexOfExactLength(this.$route.params.hash, 64)){
       helixNode.helix.findTransactionObjects({
         bundles: [this.$route.params.hash]
       }, function(e, r) {
@@ -50,11 +62,15 @@ export default {
           _this.txIOs = await txToIO(r)
         })()
       })
+    } else{
+      this.isValid = false;
     }
+  }
   },
   data() {
     return {
-      txIOs: null
+      txIOs: null,
+      isValid:true
     }
   }
 }
