@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td title="Time since genesis transaction">Time</td>
-                <td class="mono-space">{{ helixNode.nodeInfo.time }}</td>
+                <td class="mono-space">{{ new Date(helixNode.nodeInfo.time).toString() }}</td>
             </tr>
             <tr>
                 <td title="Number of uncomfirmed transactions in the tangle">Number of tips</td>
