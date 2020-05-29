@@ -4,8 +4,11 @@
       Results
     </legend>
     <search-results v-if="addrResults !== null || txResults !== null || bundleResults !== null" :bundleResults='bundleResults' :txResults='txResults' :addrResults='addrResults'></search-results>
+    <div class="absence error" v-else-if="invalidQuery === true">
+      Invalid search query, please check your search input :(
+    </div>
     <div class="absence error" v-else>
-      No transaction or address found :(
+      No transaction or address found or bundles  :(
     </div>
   </div>
   <div v-else class="container page-loading">
@@ -19,6 +22,7 @@ const helixSearch = require('@/utils/helix-search-engine.js')
 import helixNode from "@/utils/helix-node";
 import SearchResults from '@/components/SearchResults.vue'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import { isTxHex } from "@helixnetwork/validators";
 
 export default {
   components: {
@@ -28,6 +32,7 @@ export default {
   mounted() {
     var val = this.$route.params.query
     var _this = this
+  if(isTxHex(val)) {
     helixSearch(val, (txs) => {
       _this.txResults = txs
     }, (addresses) => {
@@ -37,13 +42,18 @@ export default {
     }, () => {
       _this.searching = false
     })
+  }  else{
+     _this.invalidQuery = true;
+     _this.searching = false
+  }
   },
   data() {
     return {
       searching: true,
       txResults: null,
       addrResults: null,
-      bundleResults: null
+      bundleResults: null,
+     invalidQuery:false
     }
   }
 }

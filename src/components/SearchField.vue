@@ -8,6 +8,7 @@
 <script>
 const _ = require('lodash')
 import helixSearch from "@/utils/helix-search-engine";
+import { isTxHex } from "@helixnetwork/validators";
 import helixNode from "@/utils/helix-node";
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
@@ -60,6 +61,7 @@ export default {
       this.emptyResults()
       var val = e.target.value.trim()
       var _this = this
+      if(isTxHex(val)) {
       helixSearch(val, (txs) => {
         _this.txResults = txs
       }, (addresses) => {
@@ -67,6 +69,7 @@ export default {
       }, (bundles) => {
         _this.bundleResults = bundles
       })
+    }
     }, 300)
   },
   data() {
