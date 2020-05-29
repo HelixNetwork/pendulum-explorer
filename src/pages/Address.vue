@@ -47,6 +47,14 @@
       <pulse-loader :color="'#000'" size='30px'></pulse-loader>
     </div>
   </div>
+  <div  v-else-if="isValid === false">
+ <legend>
+      Results
+    </legend>
+    <div class="absence error">
+      Invalid search query, please check your search input :(
+    </div>
+  </div>
   <div class="page-loading" v-else>
     <pulse-loader :color="'#000'" size='30px'></pulse-loader>
   </div>
