@@ -1,9 +1,9 @@
 <template lang="html">
   <div class='results' v-if="addrResults !== null || txResults !== null">
-    <div class="result" v-if="txResults.length == 0 && addrResults == null">
+    <div class="result" v-if="txResults.length == 0 && addrResults == null && bundleResults== null ">
       <div class="cut-text hash">
         <i class="fa fa-search"></i>
-        <span class="result-cat">No transaction or address found</span>
+        <span class="result-cat">No transactions found</span>
       </div>
     </div>
 
@@ -43,7 +43,6 @@
 </template>
 
 <script>
-require('@/lib/helix')
 const helixNode = require("@/utils/helix-node")
 const helixSearch = require('@/utils/helix-search-engine.js')
 

@@ -1,10 +1,9 @@
 <template>
   <div class="container pt-4">
         <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-12 col-md-12 col-lg-12 text-left">
          <p class="blue-color">EXPLORE</p>
         <search-field></search-field>
-        <!-- <p> <i class="fa fa-info-circle"></i>  Enter an address, transaction hash,bundle or tag</p>  -->
         </div>
       </div>
     <node-info></node-info>
@@ -14,9 +13,7 @@
 <script>
 import NodeInfo from '@/components/NodeInfo.vue'
 import SearchField from '@/components/SearchField.vue'
-
-require('@/lib/helix')
-var helixNode = require("@/utils/helix-node")
+import helixNode from "@/utils/helix-node";
 
 export default {
   components: {

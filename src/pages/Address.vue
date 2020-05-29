@@ -12,7 +12,7 @@
       </div>
       <div class="addr-box">
         <div class="qr">
-          <identi-qr :size='500' :contents="$getQRCode($route.params.hash)"></identi-qr>
+          <identi-qr :size='200' :contents="$getQRCode($route.params.hash)"></identi-qr>
         </div>
         <div slot='content' class="addr mono-space">
           <click-to-select :text='$route.params.hash'></click-to-select>
@@ -53,11 +53,10 @@
 </template>
 
 <script>
-  require('@/lib/helix')
-  const helixNode = require("@/utils/helix-node")
   const txToIO = require('@/utils/tx-to-io.js').default
   const _ = require('lodash')
 
+  import helixNode from "@/utils/helix-node";
   import TxIo from '@/components/TXIo.vue'
   import IdentiQr from '@/components/IdentiQR.vue'
   import ExpandBox from '@/components/ExpandBox.vue'
@@ -81,19 +80,19 @@
     methods: {
       initAddr() {
         var _this = this
-        helixNode.iota.api.getBalances([this.$route.params.hash], 20, function(e, r) {
+        helixNode.helix.getBalances([this.$route.params.hash], 20, function(e, r) {
           _this.addr.balances = _.map(r.balances, (balance) => {
             return parseInt(balance)
           })
         })
-        helixNode.iota.api.findTransactionObjects({
+        helixNode.helix.findTransactionObjects({
           addresses: [this.$route.params.hash]
         }, function(e, r) {
           _this.addr.transactions = r
           var bundles = _.uniq(_.map(r, (tx) => {
             return tx.bundle
           }))
-          helixNode.iota.api.findTransactionObjects({
+          helixNode.helix.findTransactionObjects({
             bundles
           }, function(e, r) {
             (async() => {

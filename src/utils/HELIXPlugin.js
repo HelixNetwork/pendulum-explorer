@@ -1,6 +1,6 @@
+import { removeChecksum } from '@helixnetwork/checksum';
+
 const moment = require('moment');
-require('@/lib/helix');
-const helixNode = require('@/utils/helix-node');
 
 export default {
   install(Vue, options) {
@@ -16,8 +16,8 @@ export default {
     };
 
     Vue.prototype.$getStyleIO = (h1, h2) => {
-      if (!(h1 === null || h2 === null) && helixNode.iota.utils.noChecksum(h1) === helixNode.iota.utils.noChecksum(h2)) {
-        return 'font-weight: bold; font-style:italic';
+      if (!(h1 === null || h2 === null) && removeChecksum(h1) === removeChecksum(h2)) {
+        return 'font-style:italic';
       }
     };
   },

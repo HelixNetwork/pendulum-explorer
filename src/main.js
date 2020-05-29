@@ -26,7 +26,6 @@ require('@/styles/font-awesome.scss');
 require('@/styles/layout.styl');
 
 require('@/lib/identi-qrcode');
-require('@/lib/helix');
 require('@/utils/helix-node');
 
 Vue.config.productionTip = false;

@@ -19,14 +19,16 @@
         <tx-io :viewingHash='null' :txIO="txIO"></tx-io>
       </div>
     </div>
+    <div class="bundle-view" v-if="!txIOs">
+      <h4> No transfers found for this bundle :-( </h4>
+      </div>
   </div>
 </template>
 
 <script>
-require('@/lib/helix')
-const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 const _ = require('lodash')
+import helixNode from "@/utils/helix-node";
 import TxIo from '@/components/TXIo.vue'
 import ClickToSelect from '@/components/ClickToSelect.vue'
 
@@ -41,7 +43,7 @@ export default {
   methods: {
     initBundle() {
       var _this = this
-      helixNode.iota.api.findTransactionObjects({
+      helixNode.helix.findTransactionObjects({
         bundles: [this.$route.params.hash]
       }, function(e, r) {
         (async() => {
@@ -59,4 +61,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.bundle-view
+  display: flex;
+  justify-content: space-evenly;
 </style>

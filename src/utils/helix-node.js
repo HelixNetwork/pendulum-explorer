@@ -1,3 +1,6 @@
+
+import { composeAPI } from '@helixnetwork/core';
+
 const log = require('@/utils/log');
 const settings = require('@/utils/settings.js').default;
 
@@ -6,29 +9,29 @@ const obj = {
   nodeInfo: {
     appName: null,
     appVersion: null,
+    duration: null,
     jreAvailableProcessors: null,
     jreFreeMemory: null,
-    jreVersion: null,
     jreMaxMemory: null,
     jreTotalMemory: null,
-    latestMilestone: null,
-    latestMilestoneIndex: null,
-    latestSolidSubtangleMilestone: null,
-    latestSolidSubtangleMilestoneIndex: null,
+    currentRoundIndex: null,
+    latestSolidRoundHash: null,
+    latestSolidRoundIndex: null,
+    roundStartIndex: null,
+    lastSnapshottedRoundIndex: null,
     neighbors: null,
     packetsQueueSize: null,
     time: null,
     tips: null,
     transactionsToRequest: null,
-    duration: null,
   },
 };
 
-// Create HELIX instance directly with provider
-const iota = new IOTA({
+// Create HELIX instance directly with provider\
+const helix = new composeAPI({
   provider: settings.get().nodeUrl,
 });
-obj.iota = iota;
+obj.helix = helix;
 
 let refreshNodeInfoTmr = null;
 
@@ -44,7 +47,7 @@ obj.unsubscribe = (event) => {
 obj.subscribe = (event) => {
   if (event === 'node-info') {
     const refreshNodeInfo = () => {
-      iota.api.getNodeInfo((error, success) => {
+      helix.getNodeInfo((error, success) => {
         if (error) {
           log(error);
         } else {
@@ -57,4 +60,4 @@ obj.subscribe = (event) => {
     refreshNodeInfo();
   }
 };
-module.exports = obj;
+export default obj;

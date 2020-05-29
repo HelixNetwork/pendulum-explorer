@@ -131,10 +131,9 @@
 </template>
 
 <script>
-require('@/lib/helix')
-const helixNode = require("@/utils/helix-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 
+import helixNode from "@/utils/helix-node";
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import TxIo from '@/components/TXIo.vue'
@@ -160,11 +159,9 @@ export default {
   methods: {
     getIOFromTX() {
       var _this = this
-      helixNode.iota.api.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
-        console.log('eeee', e, r);
+      helixNode.helix.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
         (async() => {
           var ios = await txToIO(r)
-          console.log(ios);
           _this.txIO = ios[0]
         })()
       })
@@ -174,7 +171,7 @@ export default {
     },
     initTX() {
       var _this = this
-      helixNode.iota.api.getTransactionsObjects([this.$route.params.hash], function(e, r) {
+      helixNode.helix.getTransactionObjects([this.$route.params.hash], function(e, r) {
         _this.tx = r[0]
         _this.getIOFromTX(r[0])
       })

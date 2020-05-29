@@ -1,11 +1,11 @@
-require('@/lib/helix');
-const helixNode = require('@/utils/helix-node');
+import helixNode from '@/utils/helix-node';
+
 const _ = require('lodash');
 
-module.exports = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDone) => {
+const helixSearch = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDone) => {
   let callbackStack = 3;
   const callbackCheck = () => {
-    callbackStack--;
+    callbackStack -= 1;
     if (callbackStack === 0) {
       if (fullyDone !== undefined) {
         fullyDone();
@@ -13,11 +13,11 @@ module.exports = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDon
     }
   };
 
-  helixNode.iota.api.getBalances([val], 20, (e, r) => {
-    if (r !== undefined) {
-      const balance = parseInt(r.balances[0]);
-      helixNode.iota.api.findTransactionObjects({ addresses: [val] }, (e, r) => {
-        if (r !== undefined && r.length > 0) {
+  helixNode.helix.getBalances([val], 20, (error, response) => {
+    if (response !== undefined) {
+      const balance = parseInt(response.balances[0], 10);
+      helixNode.helix.findTransactionObjects({ addresses: [val] }, (err, resp) => {
+        if (resp !== undefined && resp.length > 0) {
           callbackAddresses([{
             address: val,
             balance,
@@ -29,16 +29,19 @@ module.exports = (val, callbackTxs, callbackAddresses, callbackBundles, fullyDon
       callbackCheck();
     }
   });
-  helixNode.iota.api.getTransactionsObjects([val], (e, r) => {
-    callbackTxs(_.filter(r, tx => tx.hash !== '999999999999999999999999999999999999999999999999999999999999999999999999999999999'));
+
+  helixNode.helix.getTransactionObjects([val], (error, response) => {
+    callbackTxs(_.filter(response, tx => tx.bundle !== '0000000000000000000000000000000000000000000000000000000000000000'));
     callbackCheck();
   });
-  helixNode.iota.api.findTransactionObjects({ bundles: [val] }, (e, r) => {
-    if (r !== undefined && r.length > 0) {
+  helixNode.helix.findTransactionObjects({ bundles: [val] }, (error, response) => {
+    if (response !== undefined && response.length > 0) {
       callbackBundles([{
-        hash: r[0].bundle,
+        hash: response[0].bundle,
       }]);
     }
     callbackCheck();
   });
 };
+
+export default helixSearch;

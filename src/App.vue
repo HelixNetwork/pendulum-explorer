@@ -1,11 +1,11 @@
 <template>
-  <div class="container-fluid">
+<div>
     <top-bar></top-bar><br><br>
     <div class="main">
     <router-view></router-view>
     </div><br>
     <bottom-bar></bottom-bar>
-  </div>
+</div>
 </template>
 
 <script>
@@ -24,6 +24,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,500;1,700&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 .main{
   height: 100%;
   width:100%;

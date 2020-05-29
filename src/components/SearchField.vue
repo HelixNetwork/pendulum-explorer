@@ -1,16 +1,14 @@
 <template lang="html">
   <div v-click-outside="close" class='search-field'>
-    <input class="form-control" v-on:keyup.enter="pickFirstResult()" v-on:keyup.esc="emptyResults()" @input="update" v-model="searchText" type='text' placeholder="Search addresses, transactions hash " />
+    <input class="form-control" v-on:keyup.enter="pickFirstResult()" v-on:keyup.esc="emptyResults()" @input="update" v-model="searchText" type='text' placeholder="Search addresses, transaction hash or bundle hash" />
     <search-results :click='close' v-if="addrResults !== null || txResults !== null || bundleResults !== null" :bundleResults='bundleResults' :txResults='txResults' :addrResults='addrResults'></search-results>
   </div>
 </template>
 
 <script>
 const _ = require('lodash')
-require('@/lib/helix')
-const helixNode = require("@/utils/helix-node")
-const helixSearch = require('@/utils/helix-search-engine.js')
-
+import helixSearch from "@/utils/helix-search-engine";
+import helixNode from "@/utils/helix-node";
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
 import SearchResults from '@/components/SearchResults.vue'
