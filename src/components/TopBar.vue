@@ -15,7 +15,7 @@
             </li>             
             <li class="nav-item">
               <router-link :to="{ name: 'Settings' }">
-              <i class="fa fa-gear icon icons"></i>
+              <i class="fa fa-gear fa-2x icon icons"></i>
               </router-link>
             </li>
           </ul>
@@ -54,9 +54,7 @@ export default {
 
 .icons{
   color: white;
-  font-size: 32px;
 }
-
 @media only screen and (device-width: 360px) and (device-height: 640px) {
 .logo{
   height: 35%;
