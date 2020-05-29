@@ -1,6 +1,6 @@
 <template lang="html">
   <nav class="navbar fixed-bottom justify-content-center bottom-bar">
-   <a class="lt-item">© 2020. Helix Foundation</a>
+   <a class="lt-item">© 2020 Helix Foundation</a>
 </nav>
 </template>
 
