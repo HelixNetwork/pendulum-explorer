@@ -1,6 +1,6 @@
-# tangle-explorer-web
+# Helix Tangle Explorer
 
-> IOTA Tangle Explorer
+>  Tangle Explorer
 
 ## Build Setup
 

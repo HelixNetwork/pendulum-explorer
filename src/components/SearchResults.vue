@@ -1,9 +1,9 @@
 <template lang="html">
   <div class='results' v-if="addrResults !== null || txResults !== null">
-    <div class="result" v-if="txResults.length == 0 && addrResults == null">
+    <div class="result" v-if="txResults == null && addrResults == null && bundleResults== null ">
       <div class="cut-text hash">
         <i class="fa fa-search"></i>
-        <span class="result-cat">No transaction or address found</span>
+        <span class="result-cat">No transactions found</span>
       </div>
     </div>
 
@@ -28,7 +28,7 @@
         <span class="result-cat">Address: </span>{{ result.address }}
       </div>
       <div class="cut-text balance">
-        <span class="result-cat">Balance: </span><iota-balance-view :value='result.balance'></iota-balance-view>
+        <span class="result-cat">Balance: </span><helix-balance-view :value='result.balance'></helix-balance-view>
       </div>
     </div>
 
@@ -43,17 +43,16 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
-const iotaSearch = require('@/utils/iota-search-engine.js')
+import helixNode from "@/utils/helix-node";
+import helixSearch from "@/utils/helix-search-engine";
 
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
 
 export default {
   props: ['addrResults', 'bundleResults', 'txResults', 'click'],
   components: {
-    IotaBalanceView,
+    HelixBalanceView,
     RelativeTime,
   },
   methods: {

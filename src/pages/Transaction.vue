@@ -15,10 +15,10 @@
       </div>
       <div class="addr-box">
         <div class="qr">
-          <identi-qr :size='500' :contents="$getQRCode(tx.address)"></identi-qr>
+          <identi-qr :size='200' :contents="$getQRCode(tx.address)"></identi-qr>
         </div>
         <div class="addr mono-space">
-          <router-link :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link>
+          <router-link class="blue-color" :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link>
         </div>
       </div>
       <div class="tx-info stretch mobile">
@@ -44,7 +44,7 @@
           Value
         </div>
         <div class="value">
-          <iota-balance-view :value='tx.value'></iota-balance-view>
+          <helix-balance-view :value='tx.value'></helix-balance-view>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -69,11 +69,11 @@
           </tr>
           <tr>
             <td title="The Output Address of all spent inputs, before change is returned">Address</td>
-            <td class="val mono-space"><router-link :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link></td>
+            <td class="val mono-space"><router-link class="blue-color" :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link></td>
           </tr>
           <tr>
               <td title="Value transferred in this Transaction">Value</td>
-              <td class="val mono-space"><iota-balance-view :value='tx.value'></iota-balance-view></td>
+              <td class="val mono-space"><helix-balance-view :value='tx.value'></helix-balance-view></td>
           </tr>
           <tr>
               <td title="Tag sent with this Transaction, encoded in Trytes">Tag</td>
@@ -93,15 +93,15 @@
           </tr>
           <tr>
               <td title="Hash of the Trunk Transaction which this tranasction approves">Trunk Transaction Hash</td>
-              <td class="val mono-space"><router-link :title='tx.trunkTransaction' :to="{ name: 'Transaction', params: { hash: tx.trunkTransaction }}">{{ tx.trunkTransaction }}</router-link></td>
+              <td class="val mono-space"><router-link class="blue-color" :title='tx.trunkTransaction' :to="{ name: 'Transaction', params: { hash: tx.trunkTransaction }}">{{ tx.trunkTransaction }}</router-link></td>
          </tr>
           <tr>
               <td title="Hash of the Branch Transaction which this Tranasction approves">Branch Transaction Hash</td>
-              <td class="val mono-space"><router-link :title='tx.branchTransaction' :to="{ name: 'Transaction', params: { hash: tx.branchTransaction }}">{{ tx.branchTransaction }}</router-link></td>
+              <td class="val mono-space"><router-link class="blue-color" :title='tx.branchTransaction' :to="{ name: 'Transaction', params: { hash: tx.branchTransaction }}">{{ tx.branchTransaction }}</router-link></td>
          </tr>
           <tr>
               <td td="Hash of the Bundle which this Transaction is contained in">Bundle Hash</td>
-              <td class="val mono-space"><router-link :title='tx.bundle' :to="{ name: 'Bundle', params: { hash: tx.bundle }}">{{ tx.bundle }}</router-link></td>
+              <td class="val mono-space"><router-link class="blue-color" :title='tx.bundle' :to="{ name: 'Bundle', params: { hash: tx.bundle }}">{{ tx.bundle }}</router-link></td>
           </tr>
           <tr>
               <td title="Value to verify Proof of Work">Nonce</td>
@@ -124,19 +124,25 @@
     </legend>
     <tangle-graph :txs='[tx]' :viewingHash='tx.hash' :viewingTrunkHash='tx.trunkTransaction' :viewingBranchHash='tx.branchTransaction'></tangle-graph>
   </div>
-
+  <div  v-else-if="isValid === false">
+ <legend>
+      Results
+    </legend>
+    <div class="absence error">
+      Invalid search query, please check your search input :(
+    </div>
+  </div>
   <div class="page-loading" v-else>
     <pulse-loader :color="'#000'" size='30px'></pulse-loader>
   </div>
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
 const txToIO = require('@/utils/tx-to-io.js').default
 
+import helixNode from "@/utils/helix-node";
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import TxIo from '@/components/TXIo.vue'
 import IdentiQr from '@/components/IdentiQR.vue'
 import ExpandBox from '@/components/ExpandBox.vue'
@@ -144,6 +150,7 @@ import RelativeTime from '@/components/RelativeTime.vue'
 import ClickToSelect from '@/components/ClickToSelect.vue'
 import TxStatus from '@/components/TxStatus.vue'
 import TangleGraph from '@/components/TangleGraph.vue'
+import { isTxHexOfExactLength } from "@helixnetwork/validators";
 
 export default {
   components: {
@@ -151,7 +158,7 @@ export default {
     ExpandBox,
     TxIo,
     RelativeTime,
-    IotaBalanceView,
+    HelixBalanceView,
     TxStatus,
     ClickToSelect,
     TangleGraph,
@@ -160,11 +167,9 @@ export default {
   methods: {
     getIOFromTX() {
       var _this = this
-      iotaNode.iota.api.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
-        console.log('eeee', e, r);
+      helixNode.helix.findTransactionObjects({ bundles: [this.tx.bundle] }, (e, r) => {
         (async() => {
           var ios = await txToIO(r)
-          console.log(ios);
           _this.txIO = ios[0]
         })()
       })
@@ -174,11 +179,16 @@ export default {
     },
     initTX() {
       var _this = this
-      iotaNode.iota.api.getTransactionsObjects([this.$route.params.hash], function(e, r) {
+      if(isTxHexOfExactLength(this.$route.params.hash,64))
+      {
+      helixNode.helix.getTransactionObjects([this.$route.params.hash], function(e, r) {
         _this.tx = r[0]
         _this.getIOFromTX(r[0])
       })
+    } else{
+      this.isValid = false;
     }
+  }
   },
   mounted() {
     this.initTX()
@@ -192,7 +202,8 @@ export default {
     return {
       txIO: null,
       hash: this.$route.params.hash,
-      tx: null
+      tx: null,
+      isValid: true
     }
   }
 }
@@ -240,6 +251,7 @@ export default {
 .tx-box
   word-break break-all
   background #fff
+  padding-top 5%
 
   .tx-info
     width auto
@@ -303,4 +315,8 @@ export default {
 
 .val
   word-break break-all
+
+.blue-color{
+color:#1e7fde;
+}
 </style>

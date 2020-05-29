@@ -1,7 +1,8 @@
 const store = require('store');
+const nodeUrl = require('../config').defaultNode;
 
 const defaultSettings = {
-  nodeUrl: 'https://nodes.thetangle.org:443',
+  nodeUrl,
 };
 
 export default {

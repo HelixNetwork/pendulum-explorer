@@ -1,23 +1,26 @@
 <template lang="html">
-  <div class='top-bar'>
-    <div class='container'>
-      <div class="left">
+    <nav class="navbar fixed-top navbar-expand navbar-light shadow mb-5 top-bar">   
+      <div class="navbar-brand">
         <router-link to="/">
           <img class='logo' src="../assets/logo.png" />
         </router-link>
-      </div>
-      <div class='right'>
-        <div class="bar-button">
-          <router-link :to="{ name: 'Settings' }">
-            <i class="fa fa-gear icon" style="font-size: 32px"></i>
-          </router-link>
-        </div>
-        <div class='search'>
-          <search-field></search-field>
-        </div>
-      </div>
+      </div> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon icons"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="search-field-top-bar">
+              <search-field></search-field>
+            </li>             
+            <li class="nav-item">
+              <router-link :to="{ name: 'Settings' }">
+              <i class="fa fa-gear fa-2x icon icons"></i>
+              </router-link>
+            </li>
+          </ul>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -30,53 +33,172 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-@import "../styles/media-mixin.styl"
+<style>
 
-.container
-  position relative
+.logo{
+  height: 25%;
+  width: 35%;
+}
 
-.logo
-  margin-top 5px
-  margin-left 5px
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 5%;
+  top: 20%;
+}
 
-.search
-  margin-top 20px
+.top-bar{
+  background-color: #df9e02;
+  height: 10%;
+}
 
-.search-field
-  position absolute
-  width 100%
-  right 40px
+.icons{
+  color: white;
+}
+@media only screen and (device-width: 360px) and (device-height: 640px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}  
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 18%;
+}
+}
 
-.right
-  position absolute
-  left 100px
-  right 0px
+@media only screen and (device-width: 360px) and (device-height: 740px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 18%;
+}
+}
 
-.left
-  float left
-  width 100px
-
-.top-bar
-  position fixed
-  top 0
-  left 0
-  right 0
-  height 80px
-  background #121728
-  padding-left 10px
-  padding-right 10px
-  z-index: 2
-
-  .bar-button
-    a
-      display block
-    float right
-    margin-left 5px
-    margin-top 20px
-
-  .icon
-    color #fff
-    margin-left 10px
-    margin-top 2px
+@media only screen and (device-width: 375px) and (device-height: 812px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}  
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 28%;
+}
+}
+@media only screen and (device-width: 375px) and (device-height: 667px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}  
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 18%;
+}
+}
+@media only screen and (device-width: 414px) and (device-height: 846px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}  
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 18%;
+}
+}
+@media only screen and (device-width: 414px) and (device-height: 896px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}  
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 28%;
+}
+}
+@media only screen and (device-width: 414px) and (device-height: 736px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}  
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 20%;
+}
+}
+@media only screen and (device-width: 420px) and (device-height: 720px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}  
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 18%;
+}
+}
+@media only screen and (device-width: 360px) and (device-height: 760px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}  
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 18%;
+}
+}
+@media only screen and (device-width: 320px) and (device-height: 568px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 18%;
+}
+}
+@media only screen and (device-width: 800px) and (device-height: 1280px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 10%;
+  top: 30%;
+}
+}
+@media only screen and (max-width: 310px) {
+.logo{
+  height: 35%;
+  width: 45%;
+}
+.search-field-top-bar{
+  position: absolute;
+  width: 40%;
+  right: 15%;
+  top: 15%;
+}
+}
 </style>

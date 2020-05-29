@@ -1,23 +1,22 @@
 <template lang="html">
   <div v-click-outside="close" class='search-field'>
-    <input class="search-input" v-on:keyup.enter="pickFirstResult()" v-on:keyup.esc="emptyResults()" @input="update" v-model="searchText" type='text' placeholder="Search transactions, addresses" />
+    <input class="form-control" v-on:keyup.enter="pickFirstResult()" v-on:keyup.esc="emptyResults()" @input="update" v-model="searchText" type='text' placeholder="Search addresses, transaction hash or bundle hash" />
     <search-results :click='close' v-if="addrResults !== null || txResults !== null || bundleResults !== null" :bundleResults='bundleResults' :txResults='txResults' :addrResults='addrResults'></search-results>
   </div>
 </template>
 
 <script>
 const _ = require('lodash')
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
-const iotaSearch = require('@/utils/iota-search-engine.js')
-
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import helixSearch from "@/utils/helix-search-engine";
+import { isTxHex } from "@helixnetwork/validators";
+import helixNode from "@/utils/helix-node";
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
 import SearchResults from '@/components/SearchResults.vue'
 
 export default {
   components: {
-    RelativeTime, IotaBalanceView, SearchResults
+    RelativeTime, HelixBalanceView, SearchResults
   },
   methods: {
     goTo(name, hash) {
@@ -62,13 +61,15 @@ export default {
       this.emptyResults()
       var val = e.target.value.trim()
       var _this = this
-      iotaSearch(val, (txs) => {
+      if(isTxHex(val)) {
+      helixSearch(val, (txs) => {
         _this.txResults = txs
       }, (addresses) => {
         _this.addrResults = addresses
       }, (bundles) => {
         _this.bundleResults = bundles
       })
+    }
     }, 300)
   },
   data() {

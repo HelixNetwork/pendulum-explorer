@@ -1,47 +1,50 @@
 <template lang="html">
-  <div class='node-info' v-if="iotaNode.nodeInfo.appName !== null">
-    <legend>Node Info</legend>
+  <div class='node-info' v-if="helixNode.nodeInfo.appName !== null">
+    <legend class="blue-color">NODE INFO</legend>
     <table class="wrap striped">
         <tbody>
             <tr>
                 <td>Application Name</td>
-                <td class="mono-space">{{ iotaNode.nodeInfo.appName }}</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.appName }}</td>
             </tr>
             <tr>
-                <td title="Current IRI version">Application Version</td>
-                <td class="mono-space">{{ iotaNode.nodeInfo.appVersion }}</td>
+                <td title="Current pendulum version">Application Version</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.appVersion }}</td>
             </tr>
-            <tr>
-                <td title="Current Milestone hash of the tangle"> Latest Milestone</td>
+                <tr>
+                <td title="Current Round index of the tangle">Current Round Index</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.currentRoundIndex }}</td>
+            </tr>
+              <tr>
+                <td title="Latest Solid Round index of the tangle"> Latest Solid Round Index</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.latestSolidRoundIndex }}</td>
+            </tr>
+                <tr>
+                <td title="Current Solid Round hash of the tangle"> Latest Solid Round Hash</td>
                 <td class="mono-space">
-                  <router-link :title="iotaNode.nodeInfo.latestMilestone" :to="{ name: 'Transaction', params: { hash: iotaNode.nodeInfo.latestMilestone }}">{{ iotaNode.nodeInfo.latestMilestone }}</router-link>
+                  <router-link class="blue-color" :title="helixNode.nodeInfo.latestSolidRoundHash" :to="{ name: 'Transaction', params: { hash: helixNode.nodeInfo.latestSolidRoundHash }}">{{ helixNode.nodeInfo.latestSolidRoundHash }}</router-link>
                 </td>
             </tr>
+
             <tr>
-                <td title="Current Milestone index of the tangle">Lastest Milestone Index</td>
-                <td class="mono-space">{{ iotaNode.nodeInfo.latestMilestoneIndex }}</td>
+                <td title="Round start index of the tangle">Round Start Index</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.roundStartIndex }}</td>
             </tr>
-            <tr>
-                <td title="Current Solid Subtangle hash of the tangle"> Lastest Solid Subtangle Milestone</td>
-                <td class="mono-space">
-                  <router-link :title="iotaNode.nodeInfo.latestSolidSubtangleMilestone" :to="{ name: 'Transaction', params: { hash: iotaNode.nodeInfo.latestSolidSubtangleMilestone }}">{{ iotaNode.nodeInfo.latestSolidSubtangleMilestone }}</router-link>
-                </td>
-            </tr>
-            <tr>
-                <td title="Current Solid Subtangle index of the tangle">Lastest Solid Subtangle Milestone Index</td>
-                <td class="mono-space">{{ iotaNode.nodeInfo.latestSolidSubtangleMilestoneIndex }}</td>
+             <tr>
+                <td title="Last Snapshotted Round Index">Last Snapshotted Round Index</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.lastSnapshottedRoundIndex }}</td>
             </tr>
             <tr>
                 <td title="Number of neighbouring nodes connected">Number of Neighbours</td>
-                <td class="mono-space">{{ iotaNode.nodeInfo.neighbors }}</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.neighbors }}</td>
             </tr>
             <tr>
                 <td title="Time since genesis transaction">Time</td>
-                <td class="mono-space">{{ iotaNode.nodeInfo.time }}</td>
+                <td class="mono-space">{{ new Date(helixNode.nodeInfo.time).toString() }}</td>
             </tr>
             <tr>
                 <td title="Number of uncomfirmed transactions in the tangle">Number of tips</td>
-                <td class="mono-space">{{ iotaNode.nodeInfo.tips }}</td>
+                <td class="mono-space">{{ helixNode.nodeInfo.tips }}</td>
             </tr>
         </tbody>
     </table>
@@ -49,18 +52,19 @@
 </template>
 
 <script>
-require('@/lib/iota')
-var iotaNode = require("@/utils/iota-node")
+import helixNode from "@/utils/helix-node";
 
 export default {
   data() {
     return {
-      iotaNode: iotaNode
+      helixNode
     }
   }
 }
 </script>
 
-<style scoped lang="stylus">
-
-</style>
+<style scoped>
+.blue-color{
+color:#1e7fde;
+}
+</style>>

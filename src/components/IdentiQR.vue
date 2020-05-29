@@ -1,5 +1,5 @@
 <template lang="html">
-  <div ref="qrcode"></div>
+  <div ref="qrcode" class="qr-size"></div>
 </template>
 
 <script>
@@ -51,4 +51,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.qr-size{
+  height:100%;
+  width:100%;
+}
 </style>

@@ -20,9 +20,9 @@
         <div class="input" v-for="tx in txIO.inputs">
           <div class="io-link">
             <router-link class="mono-space io-link" :style="$getStyleIO(tx.address, viewingHash)" :title='tx.address' :to="{ name: 'Address', params: { hash: tx.address }}">{{ tx.address }}</router-link>
-            <span class="iota-val" :class="getValColor(tx.value)"><iota-balance-view :value='tx.value'></iota-balance-view></span>
+            <span class="helix-val" :class="getValColor(tx.value)"><helix-balance-view :value='tx.value'></helix-balance-view></span>
           </div>
-          <span class="iota-val" :class="getValColor(tx.value)"><iota-balance-view :value='tx.value'></iota-balance-view></span>
+          <span class="helix-val" :class="getValColor(tx.value)"><helix-balance-view :value='tx.value'></helix-balance-view></span>
           <router-link class="mono-space io-link" :title='tx.hash' :to="{ name: 'Transaction', params: { hash: tx.hash }}"><span class="tx-button">TX</span></router-link>
         </div>
       </div>
@@ -35,7 +35,7 @@
             <div class="io-link">
               <router-link class="mono-space io-link" :style="$getStyleIO(tx.address, viewingHash)" :title='tx.address' :to="{ name: 'Transaction', params: { hash: tx.hash }}">{{ tx.address }}</router-link>
             </div>
-            <span class="iota-val" :class="getValColor(tx.value)"><iota-balance-view :value='tx.value'></iota-balance-view></span>
+            <span class="helix-val" :class="getValColor(tx.value)"><helix-balance-view :value='tx.value'></helix-balance-view></span>
             <router-link class="mono-space io-link" :title='tx.hash' :to="{ name: 'Transaction', params: { hash: tx.hash }}"><span class="tx-button">TX</ceri-icon></span></router-link>
           </div>
         </div>
@@ -46,10 +46,8 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
-
-import IotaBalanceView from '@/components/IotaBalanceView.vue'
+import helixNode from "@/utils/helix-node";
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import IdentiQr from '@/components/IdentiQR.vue'
 import ExpandBox from '@/components/ExpandBox.vue'
 import RelativeTime from '@/components/RelativeTime.vue'
@@ -59,7 +57,7 @@ export default {
   components: {
     IdentiQr,
     ExpandBox,
-    IotaBalanceView,
+    HelixBalanceView,
     RelativeTime,
     TxStatus
   },
@@ -67,7 +65,7 @@ export default {
   methods: {
     getValColor(v)
     {
-      return v > 0 ? "iota-val-positive" : "iota-val-negative"
+      return v > 0 ? "helix-val-positive" : "helix-val-negative"
     }
   }
 }
@@ -87,6 +85,7 @@ export default {
     float right
 
   .io-link
+    color:#1e7fde;
     overflow hidden
     text-overflow ellipsis
     white-space: nowrap
@@ -113,7 +112,7 @@ export default {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-weight 600
 
-  .tx-button, .iota-val
+  .tx-button, .helix-val
       box-shadow 0 3px 6px -1px rgba(0,0,0,0.12), 0 10px 36px -4px rgba(77,96,232,0)
 
 .hash, .input
@@ -131,4 +130,6 @@ export default {
 
     float left
     margin-right 5px
+
+
 </style>

@@ -12,7 +12,7 @@
       </div>
       <div class="addr-box">
         <div class="qr">
-          <identi-qr :size='500' :contents="$getQRCode($route.params.hash)"></identi-qr>
+          <identi-qr :size='200' :contents="$getQRCode($route.params.hash)"></identi-qr>
         </div>
         <div slot='content' class="addr mono-space">
           <click-to-select :text='$route.params.hash'></click-to-select>
@@ -23,7 +23,7 @@
           Total balance
         </div>
         <div class="value mono-space">
-          <iota-balance-view :value='addr.balances[0]'></iota-balance-view>
+          <helix-balance-view :value='addr.balances[0]'></helix-balance-view>
         </div>
       </div>
       <div class="clearfix"></div>
@@ -47,26 +47,34 @@
       <pulse-loader :color="'#000'" size='30px'></pulse-loader>
     </div>
   </div>
+  <div  v-else-if="isValid === false">
+ <legend>
+      Results
+    </legend>
+    <div class="absence error">
+      Invalid search query, please check your search input :(
+    </div>
+  </div>
   <div class="page-loading" v-else>
     <pulse-loader :color="'#000'" size='30px'></pulse-loader>
   </div>
 </template>
 
 <script>
-  require('@/lib/iota')
-  const iotaNode = require("@/utils/iota-node")
   const txToIO = require('@/utils/tx-to-io.js').default
   const _ = require('lodash')
-  
+
+  import helixNode from "@/utils/helix-node";
   import TxIo from '@/components/TXIo.vue'
   import IdentiQr from '@/components/IdentiQR.vue'
   import ExpandBox from '@/components/ExpandBox.vue'
   import RelativeTime from '@/components/RelativeTime.vue'
   import ClickToSelect from '@/components/ClickToSelect.vue'
-  import IotaBalanceView from '@/components/IotaBalanceView.vue'
+  import HelixBalanceView from '@/components/HelixBalanceView.vue'
   import TxStatus from '@/components/TxStatus.vue'
   import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-  
+  import { isAddress } from "@helixnetwork/validators";
+
   export default {
     components: {
       IdentiQr,
@@ -75,25 +83,26 @@
       RelativeTime,
       ClickToSelect,
       TxStatus,
-      IotaBalanceView,
+      HelixBalanceView,
       PulseLoader
     },
     methods: {
       initAddr() {
         var _this = this
-        iotaNode.iota.api.getBalances([this.$route.params.hash], 20, function(e, r) {
+        if(isAddress(this.$route.params.hash)){
+        helixNode.helix.getBalances([this.$route.params.hash], 20, function(e, r) {
           _this.addr.balances = _.map(r.balances, (balance) => {
             return parseInt(balance)
           })
         })
-        iotaNode.iota.api.findTransactionObjects({
+        helixNode.helix.findTransactionObjects({
           addresses: [this.$route.params.hash]
         }, function(e, r) {
           _this.addr.transactions = r
           var bundles = _.uniq(_.map(r, (tx) => {
             return tx.bundle
           }))
-          iotaNode.iota.api.findTransactionObjects({
+          helixNode.helix.findTransactionObjects({
             bundles
           }, function(e, r) {
             (async() => {
@@ -101,7 +110,10 @@
             })()
           })
         })
+      }else{
+        this.isValid = false;
       }
+    }
     },
     mounted() {
       this.initAddr()
@@ -118,7 +130,8 @@
           transactions: null
         },
         txIOs: null,
-        hash: this.$route.params.hash
+        hash: this.$route.params.hash,
+        isValid:true
       }
     }
   }

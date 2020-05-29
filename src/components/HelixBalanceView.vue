@@ -3,8 +3,8 @@
 </template>
 
 <script>
-require('@/lib/iota')
-const iotaNode = require("@/utils/iota-node")
+import { convertUnits } from "@helixnetwork/unit-converter";
+import helixNode from "@/utils/helix-node";
 
 export default {
   props: {
@@ -16,12 +16,12 @@ export default {
   methods: {
     pickUnit(value) {
       var values = {
-        '1': 'i',
-        '1000': 'Ki',
-        '1000000': 'Mi',
-        '1000000000': 'Gi',
-        '1000000000000': 'Ti',
-        '1000000000000000': 'Pi'
+        '1': 'h',
+        '1000': 'Kh',
+        '1000000': 'Mh',
+        '1000000000': 'Gh',
+        '1000000000000': 'Th',
+        '1000000000000000': 'Ph'
       }
       value = Math.abs(value)
       var closestAmount = Math.floor((value + "").length / 3) * 3
@@ -29,24 +29,24 @@ export default {
       if(typeof values[key] !== undefined) {
         return values[key]
       }
-      return 'Pi'
+      return 'Ph'
     },
     listUnit(value)
     {
       var unit = this.pickUnit(value)
       var values = {
-        'i' : 'Iota',
-        'Ki' : "Kilo Iota",
-        "Mi" : "Mega Iota",
-        "Gi" : "Giga Iota",
-        "Ti" : "Tera Iota",
-        "Pi" : "Peta Iota"
+        'h' : 'h',
+        'Kh' : "Kilo h",
+        "Mh" : "Mega h",
+        "Gh" : "Giga h",
+        "Th" : "Tera h",
+        "Ph" : "Peta h"
       }
-      return `${iotaNode.iota.utils.convertUnits(value, 'i', unit)}` + " " + values[unit];
+      return `${convertUnits(value, 'h', unit)}` + " " + values[unit];
     },
     convertToUnits(value) {
       var unit = this.pickUnit(value)
-      return `${iotaNode.iota.utils.convertUnits(value, 'i', unit)} ${unit}`
+      return `${convertUnits(value, 'h', unit)} ${unit}`
     }
   }
 }
