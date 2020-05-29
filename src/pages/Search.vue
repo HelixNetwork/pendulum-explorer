@@ -17,7 +17,7 @@
 </template>
 
 <script>
-const helixSearch = require('@/utils/helix-search-engine.js')
+import helixSearch from "@/utils/helix-search-engine";
 
 import helixNode from "@/utils/helix-node";
 import SearchResults from '@/components/SearchResults.vue'

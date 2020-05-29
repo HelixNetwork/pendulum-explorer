@@ -43,8 +43,8 @@
 </template>
 
 <script>
-const helixNode = require("@/utils/helix-node")
-const helixSearch = require('@/utils/helix-search-engine.js')
+import helixNode from "@/utils/helix-node";
+import helixSearch from "@/utils/helix-search-engine";
 
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
 import RelativeTime from '@/components/RelativeTime.vue'

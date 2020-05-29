@@ -65,6 +65,7 @@
   import HelixBalanceView from '@/components/HelixBalanceView.vue'
   import TxStatus from '@/components/TxStatus.vue'
   import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+  import { isAddress } from "@helixnetwork/validators";
 
   export default {
     components: {
@@ -80,6 +81,7 @@
     methods: {
       initAddr() {
         var _this = this
+        if(isAddress(this.$route.params.hash)){
         helixNode.helix.getBalances([this.$route.params.hash], 20, function(e, r) {
           _this.addr.balances = _.map(r.balances, (balance) => {
             return parseInt(balance)
@@ -100,7 +102,10 @@
             })()
           })
         })
+      }else{
+        this.isValid = false;
       }
+    }
     },
     mounted() {
       this.initAddr()
@@ -117,7 +122,8 @@
           transactions: null
         },
         txIOs: null,
-        hash: this.$route.params.hash
+        hash: this.$route.params.hash,
+        isValid:true
       }
     }
   }
