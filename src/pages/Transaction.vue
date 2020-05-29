@@ -124,7 +124,14 @@
     </legend>
     <tangle-graph :txs='[tx]' :viewingHash='tx.hash' :viewingTrunkHash='tx.trunkTransaction' :viewingBranchHash='tx.branchTransaction'></tangle-graph>
   </div>
-
+  <div  v-else-if="isValid === false">
+ <legend>
+      Results
+    </legend>
+    <div class="absence error">
+      Invalid search query, please check your search input :(
+    </div>
+  </div>
   <div class="page-loading" v-else>
     <pulse-loader :color="'#000'" size='30px'></pulse-loader>
   </div>
@@ -143,6 +150,7 @@ import RelativeTime from '@/components/RelativeTime.vue'
 import ClickToSelect from '@/components/ClickToSelect.vue'
 import TxStatus from '@/components/TxStatus.vue'
 import TangleGraph from '@/components/TangleGraph.vue'
+import { isTxHexOfExactLength } from "@helixnetwork/validators";
 
 export default {
   components: {
@@ -171,11 +179,16 @@ export default {
     },
     initTX() {
       var _this = this
+      if(isTxHexOfExactLength(this.$route.params.hash,64))
+      {
       helixNode.helix.getTransactionObjects([this.$route.params.hash], function(e, r) {
         _this.tx = r[0]
         _this.getIOFromTX(r[0])
       })
+    } else{
+      this.isValid = false;
     }
+  }
   },
   mounted() {
     this.initTX()
@@ -189,7 +202,8 @@ export default {
     return {
       txIO: null,
       hash: this.$route.params.hash,
-      tx: null
+      tx: null,
+      isValid: true
     }
   }
 }
