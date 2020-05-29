@@ -195,6 +195,14 @@
     "@types/bignumber.js" "^5.0.0"
     bignumber.js "^4.1.0"
 
+"@helixnetwork/validators@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@helixnetwork/validators/-/validators-1.0.0-alpha.7.tgz#584b99a309f7f884787a3c7103325a2de7d3120b"
+  integrity sha512-IoMbc5elugFmFQRRyR7+1R32KkjPSx7b6ncADuYUWmDsZ+9CYGfDPGEMHoSJShOEOcOV/NzHTnNOSLsDqDWwRQ==
+  dependencies:
+    "@helixnetwork/checksum" "^1.0.0-alpha.7"
+    "@helixnetwork/transaction" "^1.0.0-alpha.7"
+
 "@helixnetwork/winternitz@^1.0.0-alpha.7":
   version "1.0.0-alpha.7"
   resolved "https://registry.yarnpkg.com/@helixnetwork/winternitz/-/winternitz-1.0.0-alpha.7.tgz#dcc772de07e66ca2e18c646ba5ec456f528c4d7b"
