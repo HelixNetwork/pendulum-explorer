@@ -73,7 +73,7 @@
   import HelixBalanceView from '@/components/HelixBalanceView.vue'
   import TxStatus from '@/components/TxStatus.vue'
   import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-  import { isAddress } from "@helixnetwork/validators";
+  import { isAddress ,isTxHexOfExactLength } from "@helixnetwork/validators";
 
   export default {
     components: {
@@ -89,7 +89,7 @@
     methods: {
       initAddr() {
         var _this = this
-        if(isAddress(this.$route.params.hash)){
+        if(isTxHexOfExactLength(this.$route.params.hash,64)|| isAddress(this.$route.params.hash)){
         helixNode.helix.getBalances([this.$route.params.hash], 20, function(e, r) {
           _this.addr.balances = _.map(r.balances, (balance) => {
             return parseInt(balance)
@@ -102,6 +102,7 @@
           var bundles = _.uniq(_.map(r, (tx) => {
             return tx.bundle
           }))
+          bundles = _.slice(bundles, 0, 20) // Temperory alternative to deal with milestone bundles
           helixNode.helix.findTransactionObjects({
             bundles
           }, function(e, r) {
