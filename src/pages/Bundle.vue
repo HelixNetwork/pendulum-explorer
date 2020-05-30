@@ -58,7 +58,7 @@ export default {
       helixNode.helix.findTransactionObjects({
         bundles: [this.$route.params.hash]
       }, function(e, r) {
-        if(!e && r.length === 0 )
+        if(!e && r.length != 0 )
         (async() => {
           _this.txIOs = await txToIO(r)
         })()
