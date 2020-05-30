@@ -26,16 +26,18 @@ cd pendulum-explorer
 yarn install
 ```
 
-4. Start developement server
+4. Start development server with hot reload at localhost:8080
 ```
-yarn run start
+yarn run dev
 ```
 
-5. Production build
+5. Production build with minification
 
 ```
 yarn run build
 ```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Discussion
 
