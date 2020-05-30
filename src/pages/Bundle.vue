@@ -20,7 +20,7 @@
         <tx-io :viewingHash='null' :txIO="txIO"></tx-io>
       </div>
     </div>
-    <div class="bundle-view" v-if="!txIOs">
+    <div class="bundle-view" v-if="txIOs === null">
       <h4> No transfers found for this bundle :-( </h4>
       </div>
       </div>
@@ -58,6 +58,7 @@ export default {
       helixNode.helix.findTransactionObjects({
         bundles: [this.$route.params.hash]
       }, function(e, r) {
+        if(!e && r.length === 0 )
         (async() => {
           _this.txIOs = await txToIO(r)
         })()
