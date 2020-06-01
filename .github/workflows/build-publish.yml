@@ -31,7 +31,7 @@ jobs:
         name: dist
         path: dist/
   upload:
-
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Download build result
