@@ -38,7 +38,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: dist
-    - run: ls -al
+        path: dist
     - run: aws s3 sync dist s3://explorer.helixmain.net/
       env: # Or as an environment variable
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
