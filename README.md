@@ -1,8 +1,8 @@
 # Pendulum Explorer<img align="right" src="https://hlx.ai/images/Helix_Logo-white.svg" height="70px" />
 
-The Official Explorer for Pendulum (HLX) developed by the [Helix Network Organization](https://github.com/helixnetwork). The explorer is built based on the [IOTA-TANGLE-EXPLORER](https://github.com/peterwilli/IOTA-tangle-explorer). 
+The Official Explorer for Pendulum (HLX) developed by the [Helix Network Organization](https://github.com/helixnetwork). The explorer is built based on the [Iota-Tangle-Explorer](https://github.com/peterwilli/IOTA-tangle-explorer). 
 
-Special thanks to all of the [IOTA-TANGLE-EXPLORER Contributors](https://github.com/peterwilli/IOTA-tangle-explorer/graphs/contributors)!
+Special thanks to all of the [Iota-Tangle-Explorer Contributors](https://github.com/peterwilli/IOTA-tangle-explorer/graphs/contributors)!
 
 ## Prerequisites
 

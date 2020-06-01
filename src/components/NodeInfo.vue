@@ -1,6 +1,7 @@
 <template lang="html">
   <div class='node-info' v-if="helixNode.nodeInfo.appName !== null">
-    <legend class="blue-color">NODE INFO</legend>
+    <p class="blue-color">NODE INFO</p>
+    <hr/>
     <table class="wrap striped">
         <tbody>
             <tr>
