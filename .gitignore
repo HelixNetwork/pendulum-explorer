@@ -14,6 +14,3 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
-
-# We use yarn now
-package-lock.json
