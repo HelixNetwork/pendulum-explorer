@@ -11,6 +11,10 @@ export default {
     value: {
       type: Number,
       required: true
+    },
+    precision:{
+      type:Boolean,
+      required:false
     }
   },
   methods: {
@@ -46,7 +50,10 @@ export default {
     },
     convertToUnits(value) {
       var unit = this.pickUnit(value)
+      if( this.precision === false)
       return `${convertUnits(value, 'h', unit)} ${unit}`
+      else
+      return `${Number(convertUnits(value, 'h', unit)).toFixed(2)} ${unit}`
     }
   }
 }
