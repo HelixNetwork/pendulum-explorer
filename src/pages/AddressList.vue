@@ -18,7 +18,7 @@
         <tr v-for="(address , index) in addresses">
           <td>#{{ index+1 }}</td>
           <td><router-link :to="{ name: 'Address', params: { hash: address.address }}" class="blue-color">{{ address.address }}</router-link></td>
-          <td> <helix-balance-view :value='address.value '></helix-balance-view></td>
+          <td> <helix-balance-view :value='parseInt(address.value) '></helix-balance-view></td>
           <td>$ {{Number(( address.value / 1000000) * helixNode.exchangePrice).toFixed(2)}} </td>
       </tr>
       </tbody>
