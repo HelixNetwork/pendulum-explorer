@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from '@/pages/Home';
 import Transaction from '@/pages/Transaction';
 import Address from '@/pages/Address';
+import AddressList from '@/pages/AddressList';
 import Search from '@/pages/Search';
 import Bundle from '@/pages/Bundle';
 import Settings from '@/pages/Settings';
@@ -41,6 +42,11 @@ export default new Router({
       path: '/search/:query',
       name: 'Search',
       component: Search,
+    },
+    {
+      path: '/rich-addresses',
+      name: 'AddressList',
+      component: AddressList,
     },
   ],
 });
