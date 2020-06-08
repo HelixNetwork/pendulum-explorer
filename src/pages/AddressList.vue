@@ -18,8 +18,8 @@
         <tr v-for="(address , index) in addresses">
           <td>#{{ index+1 }}</td>
           <td><router-link :to="{ name: 'Address', params: { hash: address.address }}" class="blue-color">{{ address.address }}</router-link></td>
-          <td>{{ address.value }}</td>
-          <td>{{ address.value }}</td>
+          <td> <helix-balance-view :value='address.value '></helix-balance-view></td>
+          <td><helix-balance-view :value='address.value '></helix-balance-view></td>
       </tr>
       </tbody>
     </table>
@@ -31,8 +31,13 @@
 </template>
 
 <script>
+
+import HelixBalanceView from '@/components/HelixBalanceView.vue'
 export default {
   name: 'Addresslist',
+    components: {
+      HelixBalanceView,
+    },
   data() {
     return {
   addresses: [
