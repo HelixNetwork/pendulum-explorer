@@ -11,7 +11,7 @@
             <th scope="col">Rank</th>
             <th scope="col">Address</th>
             <th scope="col">Value</th>
-            <th scope="col">USD</th>
+            <th scope="col">Price (USD)</th>
          </tr>
       </thead>
       <tbody>
@@ -19,7 +19,7 @@
           <td>#{{ index+1 }}</td>
           <td><router-link :to="{ name: 'Address', params: { hash: address.address }}" class="blue-color">{{ address.address }}</router-link></td>
           <td> <helix-balance-view :value='address.value '></helix-balance-view></td>
-          <td><helix-balance-view :value='address.value '></helix-balance-view></td>
+          <td>$ {{Number(( address.value / 1000000) * helixNode.exchangePrice).toFixed(2)}} </td>
       </tr>
       </tbody>
     </table>
@@ -33,13 +33,22 @@
 <script>
 
 import HelixBalanceView from '@/components/HelixBalanceView.vue'
+import helixNode from "@/utils/helix-node";
 export default {
+
   name: 'Addresslist',
     components: {
       HelixBalanceView,
     },
+      beforeDestroy() {
+    helixNode.unsubscribe('get-exchange-price')
+  },
+  mounted() {
+    helixNode.subscribe('get-exchange-price')
+  },
   data() {
     return {
+  helixNode,
   addresses: [
   {
     "address": "b1ee151c56a093c3ddd732813357cca70b9f2c36713827a6eb36f6f02095fc5e",
