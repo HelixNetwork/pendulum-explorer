@@ -28,34 +28,35 @@ export default {
 .main{
   height: 100%;
   width:100%;
-  padding-top:5%;
+  padding:5% 0%;
+
 }
 @media only screen and (device-width: 375px) and (device-height: 812px) {
 .main{
   height: 100%;
   width:100%;
-  padding-top:10%;
+  padding:10% 0%;
 }
 }
 @media only screen and (device-width: 414px) and (device-height: 846px) {
 .main{
   height: 100%;
   width:100%;
-  padding-top:10%;
+  padding:10% 0%;
 }
 }
 @media only screen and (device-width: 420px) and (device-height: 720px) {
 .main{
   height: 100%;
   width:100%;
-  padding-top:10%;
+  padding:10% 0%;
 }
 }
 @media only screen and (device-width: 360px) and (device-height: 760px) {
 .main{
   height: 100%;
   width:100%;
-  padding-top:10%;
+  padding:10% 0%;
 }
 }
 @media only screen and (max-width: 310px) {

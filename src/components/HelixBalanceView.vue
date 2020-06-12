@@ -53,7 +53,7 @@ export default {
       if( this.precision === false)
       return `${convertUnits(value, 'h', unit)} ${unit}`
       else
-      return `${Number(convertUnits(value, 'h', unit)).toFixed(2)} ${unit}`
+      return `${Number(convertUnits(value, 'h', unit)).toFixed(2)}${unit}`
     }
   }
 }
