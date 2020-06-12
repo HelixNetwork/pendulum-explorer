@@ -1,10 +1,10 @@
 <template>
-  <div class="container pt-4">
+  <div class="container">
         <div class="row justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-12 text-left">
          <p class="blue-color">TOP {{addressList.addressList.length}} RICH ADDRESS LIST</p>
-<div class="table-responsive-sm">
-  <table class="table mb-5 ">
+         <div class="table-responsive">
+  <table class="table table-sm">
       <thead>
           <tr>
             <th scope="col-2">Rank</th>
@@ -17,15 +17,15 @@
         <tr v-for="(address , index) in addressList.addressList">
           <td >#{{ index+1 }}</td>
           <td><router-link :to="{ name: 'Address', params: { hash: address.address }}" class="blue-color">{{ address.address }}</router-link></td>
-          <td> <helix-balance-view :value='parseInt(address.value) ' :precision='true'></helix-balance-view></td>
-          <td>$ {{Number(( address.value / 1000000) * helixNode.exchangePrice).toFixed(2)}} </td>
+          <td><helix-balance-view :value='parseInt(address.value) ' :precision='true'></helix-balance-view></td>
+          <td>${{Number(( address.value / 1000000) * helixNode.exchangePrice).toFixed(2)}} </td>
       </tr>
       </tbody>
     </table>
+         </div>
 </div>
         </div>
       </div>
-  </div>
 </template>
 
 <script>
@@ -58,6 +58,7 @@ export default {
 
   }
 </script>
+
 
 <style scoped lang="stylus">
 .blue-color{
